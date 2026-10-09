@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H. Mobile Zone | Quality Never Compromised</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        /* Custom 5-column grid for wide desktops */
+        @media (min-width: 1280px) {
+            .grid-cols-5-custom {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 102, 255, 0.18);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <div class="bg-blue-600 text-white text-xs py-2 px-4 text-center font-medium shadow-inner">
+        ⚡ Free Delivery across Pakistan on orders over PKR 3,000! | <span class="underline">Order Now</span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-header border-b border-blue-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo Section -->
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Custom SVG Logo -->
+                <div class="w-12 h-12 bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-white" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 'H' Letter Structure with Integrated Mobile Motif -->
+                        <path d="M11 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+                        <path d="M29 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+                        <path d="M11 20H29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+                        <rect x="17" y="14" width="6" height="12" rx="1.5" fill="#38bdf8" />
+                        <circle cx="20" cy="24" r="0.8" fill="white"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-tight text-slate-800">H. <span class="text-blue-600">Mobile Zone</span></span>
+                    <p class="text-[10px] font-semibold tracking-widest uppercase text-blue-600 -mt-1">Quality Never Compromised</p>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-md relative">
+                <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search chargers, earbuds, covers..." 
+                       class="w-full bg-slate-50 border border-slate-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
+                <i class="fas font-thin fa-search absolute left-4 top-3.5 text-slate-400"></i>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors">
+                    <i class="fas fa-shopping-bag text-lg"></i>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Nav Links -->
+        <nav class="bg-blue-50/50 border-t border-blue-100 overflow-x-auto">
+            <div class="max-w-7xl mx-auto px-4 flex gap-2 sm:gap-6 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap">
+                <button onclick="scrollToSection('all')" class="px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">All Products</button>
+                <button onclick="scrollToSection('fast-charger')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">⚡ Fast Chargers</button>
+                <button onclick="scrollToSection('earbuds')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🎧 Earbuds</button>
+                <button onclick="scrollToSection('power-banks')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔋 Power Banks</button>
+                <button onclick="scrollToSection('speakers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔊 Speakers</button>
+                <button onclick="scrollToSection('mobile-covers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">📱 Mobile Covers</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 text-white py-12 md:py-16 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-8">
+            <div class="space-y-4 text-center md:text-left">
+                <span class="bg-blue-500/30 text-blue-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block border border-blue-400/30">
+                    Premium Quality Accessories
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                    Upgrade Your Tech Experience
+                </h1>
+                <p class="text-blue-100 text-lg max-w-lg font-light">
+                    "Quality never compromised." Discover authentic fast chargers, crystal-clear earbuds, durable power banks, and stylish cases.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
+                    <a href="#fast-charger" class="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-bold text-sm shadow-md transition">Explore Catalog</a>
+                    <a href="#power-banks" class="bg-blue-800/40 hover:bg-blue-800/60 border border-white/20 px-6 py-3 rounded-xl font-bold text-sm transition">Best Sellers</a>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex justify-center">
+                <div class="relative w-80 h-80 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 flex flex-col justify-between shadow-2xl">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">100% Genuine</h3>
+                            <p class="text-xs text-blue-100">Guaranteed Brand Warranty</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Fast Dispatch</h3>
+                            <p class="text-xs text-blue-100">24-48 Hour Express Delivery</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Customer Support</h3>
+                            <p class="text-xs text-blue-100">WhatsApp Help 24/7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- Mobile Search Input -->
+        <div class="md:hidden">
+            <input type="text" id="mobileSearchInput" oninput="filterProducts()" placeholder="Search accessories..." 
+                   class="w-full bg-white border border-slate-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-blue-500 shadow-sm">
+        </div>
+
+        <!-- Fast Charger Section -->
+        <section id="fast-charger" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">⚡</div>
+                    <h2 class="text-xl font-bold text-slate-800">Fast Chargers</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-fast-charger">
+                <!-- Javascript will inject 5 products -->
+            </div>
+        </section>
+
+        <!-- Earbuds Section -->
+        <section id="earbuds" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🎧</div>
+                    <h2 class="text-xl font-bold text-slate-800">Wireless Earbuds</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-earbuds">
+                <!-- Javascript will inject 5 products -->
+            </div>
+        </section>
+
+        <!-- Power Banks Section -->
+        <section id="power-banks" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🔋</div>
+                    <h2 class="text-xl font-bold text-slate-800">Power Banks</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-power-banks">
+                <!-- Javascript will inject 5 products -->
+            </div>
+        </section>
+
+        <!-- Speakers Section -->
+        <section id="speakers" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🔊</div>
+                    <h2 class="text-xl font-bold text-slate-800">Bluetooth Speakers</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-speakers">
+                <!-- Javascript will inject 5 products -->
+            </div>
+        </section>
+
+        <!-- Mobile Covers Section -->
+        <section id="mobile-covers" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">📱</div>
+                    <h2 class="text-xl font-bold text-slate-800">Mobile Covers</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-mobile-covers">
+                <!-- Javascript will inject 5 products -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Cart Modal Drawer -->
+    <div id="cartModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden transition-opacity">
+        <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-blue-600 text-white">
+                <h3 class="font-bold text-lg flex items-center gap-2">
+                    <i class="fas fa-shopping-bag"></i> Shopping Cart
+                </h3>
+                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-800 transition">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Items Container -->
+            <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
+                <!-- Empty state -->
+                <div id="emptyCartMessage" class="text-center py-16 text-slate-400">
+                    <i class="fas fa-shopping-basket text-5xl mb-3 text-slate-200"></i>
+                    <p class="font-medium">Your cart is currently empty</p>
+                    <p class="text-xs text-slate-400 mt-1">Browse our store and add accessories!</p>
+                </div>
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
+                <div class="flex justify-between font-bold text-slate-800 text-base">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal" class="text-blue-600">PKR 0</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div class="w-7 h-7 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold">✓</div>
+        <div>
+            <p class="text-xs font-bold" id="toastTitle">Added to Cart</p>
+            <p class="text-[11px] text-slate-300" id="toastMessage">Item has been added to your shopping bag.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 mt-16 text-sm border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-sm">H</div>
+                    <span class="text-lg font-bold text-white">H. Mobile Zone</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Your trusted destination for genuine mobile accessories in Pakistan. Fast shipping, guaranteed quality, and competitive prices.
+                </p>
+                <p class="text-xs font-semibold text-blue-400">"Quality never compromised"</p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Quick Categories</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><a href="#fast-charger" class="hover:text-white transition">Fast Chargers</a></li>
+                    <li><a href="#earbuds" class="hover:text-white transition">Wireless Earbuds</a></li>
+                    <li><a href="#power-banks" class="hover:text-white transition">Power Banks</a></li>
+                    <li><a href="#speakers" class="hover:text-white transition">Speakers</a></li>
+                    <li><a href="#mobile-covers" class="hover:text-white transition">Mobile Covers</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Customer Support</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><i class="fab fa-whatsapp text-green-400 mr-2"></i> +92 300 1234567</li>
+                    <li><i class="fas fa-envelope text-blue-400 mr-2"></i> info@hmobilezone.pk</li>
+                    <li><i class="fas fa-map-marker-alt text-red-400 mr-2"></i> Electronics Market, Karachi, Pakistan</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Payment Methods</h4>
+                <p class="text-xs text-slate-400 mb-3">Cash on Delivery (COD) / JazzCash / EasyPaisa / Bank Transfer</p>
+                <div class="flex gap-2">
+                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">COD</span>
+                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">JazzCash</span>
+                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">EasyPaisa</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+            © 2026 H. Mobile Zone. All Rights Reserved. GitHub Pages Ready Web App.
+        </div>
+    </footer>
+
+    <script>
+        // Database of Products (5 per section as requested)
+        const products = [
+            // Fast Chargers
+            { id: 101, category: 'fast-charger', title: '65W GaN Fast Charger Dual Port', price: 3450, rating: 4.9, icon: '⚡' },
+            { id: 102, category: 'fast-charger', title: '25W USB-C Super Fast Adapter', price: 1850, rating: 4.8, icon: '🔌' },
+            { id: 103, category: 'fast-charger', title: '18W Quick Charge 3.0 Adapter', price: 1250, rating: 4.6, icon: '⚡' },
+            { id: 104, category: 'fast-charger', title: 'Magnetic Wireless Fast Pad 15W', price: 2950, rating: 4.7, icon: '🧲' },
+            { id: 105, category: 'fast-charger', title: 'Braided Type-C Fast Cable 100W', price: 850, rating: 4.9, icon: '➰' },
+
+            // Earbuds
+            { id: 201, category: 'earbuds', title: 'Pro TWS Wireless Noise Cancelling', price: 4850, rating: 4.9, icon: '🎧' },
+            { id: 202, category: 'earbuds', title: 'Gaming Earbuds 45ms Low Latency', price: 3200, rating: 4.7, icon: '🎮' },
+            { id: 203, category: 'earbuds', title: 'AirBuds True Wireless Stereo', price: 2650, rating: 4.5, icon: '🎵' },
+            { id: 204, category: 'earbuds', title: 'Sports Neckband Wireless Earphones', price: 1950, rating: 4.6, icon: '🏃' },
+            { id: 205, category: 'earbuds', title: 'Mini In-Ear Pods Super Bass', price: 2150, rating: 4.4, icon: '🎙️' },
+
+            // Power Banks
+            { id: 301, category: 'power-banks', title: '20,000mAh 22.5W Fast Power Bank', price: 4200, rating: 4.8, icon: '🔋' },
+            { id: 302, category: 'power-banks', title: '10,000mAh Slim Pocket Battery', price: 2850, rating: 4.7, icon: '📱' },
+            { id: 303, category: 'power-banks', title: 'Magnetic Wireless Power Bank 5K', price: 3950, rating: 4.6, icon: '⚡' },
+            { id: 304, category: 'power-banks', title: '30,000mAh Heavy Duty Power Pack', price: 5900, rating: 4.9, icon: '🏢' },
+            { id: 305, category: 'power-banks', title: 'Solar Outdoor Charging Bank 10K', price: 3400, rating: 4.5, icon: '☀️' },
+
+            // Speakers
+            { id: 401, category: 'speakers', title: 'Portable Bluetooth Speaker 10W', price: 2990, rating: 4.8, icon: '🔊' },
+            { id: 402, category: 'speakers', title: 'Mini Metal Wireless Speaker', price: 1650, rating: 4.6, icon: '📻' },
+            { id: 403, category: 'speakers', title: 'Waterproof Outdoor Sound Box', price: 4500, rating: 4.9, icon: '🌊' },
+            { id: 404, category: 'speakers', title: 'RGB Light Party Speaker 20W', price: 5200, rating: 4.7, icon: '✨' },
+            { id: 405, category: 'speakers', title: 'Desktop Soundbar Dual Driver', price: 3800, rating: 4.5, icon: '📺' },
+
+            // Mobile Covers
+            { id: 501, category: 'mobile-covers', title: 'MagSafe Matte Shield Case', price: 950, rating: 4.9, icon: '📱' },
+            { id: 502, category: 'mobile-covers', title: 'Transparent Shockproof Corner Case', price: 650, rating: 4.7, icon: '🛡️' },
+            { id: 503, category: 'mobile-covers', title: 'Luxury Leather Wallet Flip Cover', price: 1250, rating: 4.8, icon: '💼' },
+            { id: 504, category: 'mobile-covers', title: 'Silicone Soft Touch Velvet Case', price: 800, rating: 4.6, icon: '🎨' },
+            { id: 505, category: 'mobile-covers', title: 'Armor Kickstand Rugged Case', price: 1100, rating: 4.7, icon: '🤖' },
+        ];
+
+        let cart = [];
+
+        // Render products into their respective category sections
+        function renderProducts() {
+            const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-covers'];
+            
+            categories.forEach(cat => {
+                const container = document.getElementById(`grid-${cat}`);
+                if (!container) return;
+
+                const catProducts = products.filter(p => p.category === cat);
+                container.innerHTML = catProducts.map(product => `
+                    <div class="product-card bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:border-blue-300 relative group">
+                        
+                        <!-- Badge -->
+                        <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100">
+                            Verified
+                        </span>
+
+                        <!-- Product Visual Placeholder -->
+                        <div class="w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300">
+                            ${product.icon}
+                        </div>
+
+                        <!-- Product Information -->
+                        <div>
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
+                                <i class="fas fa-star"></i>
+                                <span class="font-bold text-slate-700">${product.rating}</span>
+                                <span class="text-slate-400 text-[10px]">(50+)</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 mb-2 leading-snug" title="${product.title}">
+                                ${product.title}
+                            </h3>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-1">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-medium">Price</span>
+                                <span class="text-blue-600 font-extrabold text-xs sm:text-sm">PKR ${product.price.toLocaleString()}</span>
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="bg-blue-600 hover:bg-blue-700 text-white w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition shadow-md shadow-blue-500/20 active:scale-95">
+                                <i class="fas fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
+
+        // Add to Cart Logic
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingIndex = cart.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast('Added to Cart', `${product.title} added successfully!`);
+        }
+
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Update Cart Count and Drawer Content
+        function updateCartUI() {
+            const cartCountElement = document.getElementById('cartCount');
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            const emptyCartMessage = document.getElementById('emptyCartMessage');
+
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '';
+                cartItemsContainer.appendChild(emptyCartMessage);
+                emptyCartMessage.classList.remove('hidden');
+                cartSubtotal.textContent = 'PKR 0';
+                return;
+            }
+
+            emptyCartMessage.classList.add('hidden');
+
+            let total = 0;
+            cartItemsContainer.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                return `
+                    <div class="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200/60">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm">
+                            ${item.icon}
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-slate-800 line-clamp-1">${item.title}</h4>
+                            <p class="text-[11px] text-blue-600 font-semibold">PKR ${item.price.toLocaleString()} x ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-slate-700">PKR ${itemTotal.toLocaleString()}</span>
+                            <button onclick="removeFromCart(${item.id})" class="text-red-400 hover:text-red-600 p-1 text-xs">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            cartSubtotal.textContent = `PKR ${total.toLocaleString()}`;
+        }
+
+        // Toggle Drawer Modal
+        function toggleCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Toast Helper
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // Smooth Scroll Helper
+        function scrollToSection(id) {
+            if (id === 'all') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const el = document.getElementById(id);
+            if (el) {
+                const offset = 130;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = el.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Real-time Search Filter
+        function filterProducts() {
+            const desktopQuery = document.getElementById('searchInput').value.toLowerCase();
+            const mobileQuery = document.getElementById('mobileSearchInput').value.toLowerCase();
+            const query = desktopQuery || mobileQuery;
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Checkout Simulation
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Cart Empty', 'Please add items before checking out.');
+                return;
+            }
+            alert('Thank you for ordering with H. Mobile Zone!\nYour order request has been received. "Quality never compromised"');
+            cart = [];
+            updateCartUI();
+            toggleCartModal();
+        }
+
+        // Initialize Store on window load
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
