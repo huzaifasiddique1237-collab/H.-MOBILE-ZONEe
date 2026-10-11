@@ -65,10 +65,8 @@
             
             <!-- Logo Section -->
             <a href="#" class="flex items-center gap-3 group">
-                <!-- Custom SVG Logo -->
                 <div class="w-12 h-12 bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform duration-300">
                     <svg class="w-8 h-8 text-white" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- 'H' Letter Structure with Integrated Mobile Motif -->
                         <path d="M11 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
                         <path d="M29 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
                         <path d="M11 20H29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
@@ -182,9 +180,7 @@
                 </div>
                 <span class="text-xs text-slate-500 font-medium">5 Items</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-fast-charger">
-                <!-- Javascript will inject 5 products -->
-            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-fast-charger"></div>
         </section>
 
         <!-- Earbuds Section -->
@@ -196,9 +192,7 @@
                 </div>
                 <span class="text-xs text-slate-500 font-medium">5 Items</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-earbuds">
-                <!-- Javascript will inject 5 products -->
-            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-earbuds"></div>
         </section>
 
         <!-- Power Banks Section -->
@@ -210,9 +204,7 @@
                 </div>
                 <span class="text-xs text-slate-500 font-medium">5 Items</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-power-banks">
-                <!-- Javascript will inject 5 products -->
-            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-power-banks"></div>
         </section>
 
         <!-- Speakers Section -->
@@ -224,9 +216,7 @@
                 </div>
                 <span class="text-xs text-slate-500 font-medium">5 Items</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-speakers">
-                <!-- Javascript will inject 5 products -->
-            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-speakers"></div>
         </section>
 
         <!-- Mobile Covers Section -->
@@ -238,9 +228,7 @@
                 </div>
                 <span class="text-xs text-slate-500 font-medium">5 Items</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-mobile-covers">
-                <!-- Javascript will inject 5 products -->
-            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-mobile-covers"></div>
         </section>
 
     </main>
@@ -260,7 +248,6 @@
 
             <!-- Items Container -->
             <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
-                <!-- Empty state -->
                 <div id="emptyCartMessage" class="text-center py-16 text-slate-400">
                     <i class="fas fa-shopping-basket text-5xl mb-3 text-slate-200"></i>
                     <p class="font-medium">Your cart is currently empty</p>
@@ -274,9 +261,81 @@
                     <span>Subtotal:</span>
                     <span id="cartSubtotal" class="text-blue-600">PKR 0</span>
                 </div>
-                <button onclick="checkout()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
+                <button onclick="openCheckoutModalDirect()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
                     Proceed to Checkout
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Now / Checkout Modal Window -->
+    <div id="orderModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
+                <h3 class="font-bold text-lg"><i class="fas fa-bolt mr-2"></i> Quick Order / Checkout</h3>
+                <button onclick="closeOrderModal()" class="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-800 transition">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-5">
+                <!-- Order Summary Box -->
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Selected Product</h4>
+                    <p id="checkoutProductName" class="font-bold text-sm text-slate-800">-</p>
+                    <p id="checkoutProductPrice" class="text-blue-600 font-extrabold text-sm">-</p>
+                </div>
+
+                <!-- Customer Details Form -->
+                <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+                        <input type="text" id="custName" required placeholder="Ahmad Ali" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Number (WhatsApp preferred)</label>
+                        <input type="tel" id="custPhone" required placeholder="03001234567" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Full Delivery Address</label>
+                        <textarea id="custAddress" required rows="2" placeholder="House No, Street, Area, City" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500"></textarea>
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-2">Select Payment Method</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="JazzCash" checked class="text-blue-600">
+                                <span class="text-xs font-bold">JazzCash</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="EasyPaisa" class="text-blue-600">
+                                <span class="text-xs font-bold">EasyPaisa</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="Bank Transfer" class="text-blue-600">
+                                <span class="text-xs font-bold">Bank Account</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="Cash on Delivery" class="text-blue-600">
+                                <span class="text-xs font-bold">Cash on Delivery</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Bank / Account Instruction Box -->
+                    <div id="paymentInstructions" class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 space-y-1">
+                        <p class="font-bold"><i class="fas fa-info-circle mr-1"></i> Payment Account Details:</p>
+                        <p><strong>JazzCash / EasyPaisa:</strong> 0300-1234567 (H. Mobile Zone)</p>
+                        <p><strong>Bank Account (Meezan / HBL):</strong> 1234-5678901234</p>
+                        <p class="text-[11px] text-slate-600 mt-1">Please send payment to the above account before confirming, or select Cash on Delivery.</p>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
+                        Confirm Order & Send via WhatsApp 🚀
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -320,7 +379,7 @@
                 <ul class="space-y-2 text-xs text-slate-400">
                     <li><i class="fab fa-whatsapp text-green-400 mr-2"></i> +92 300 1234567</li>
                     <li><i class="fas fa-envelope text-blue-400 mr-2"></i> info@hmobilezone.pk</li>
-                    <li><i class="fas fa-map-marker-alt text-red-400 mr-2"></i> Electronics Market, Karachi, Pakistan</li>
+                    <li><i class="fas fa-map-marker-alt text-red-400 mr-2"></i> Mehmoodabad Number 3, Karachi, Pakistan</li>
                 </ul>
             </div>
 
@@ -341,21 +400,21 @@
     </footer>
 
     <script>
-        // Database of Products (5 per section as requested)
+        // Database of Products
         const products = [
             // Fast Chargers
             { id: 101, category: 'fast-charger', title: 'Google Pixel Rapid Charger', price: 2000, rating: 4.9, icon: '<img src="https://i.ibb.co/S4jgWNcY/images.jpg" alt="images" border="0">' },
-            { id: 102, category: 'fast-charger', title: 'Tooki 25W C-C Super Fast Adapter', price: 1850, rating: 4.8, icon: '<img src="https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp" alt="toocki tct1c jcd01 20w gan usb c fast charging power adapter pakistan priceoye 337j4 500x500" border="0">' },
-            { id: 103, category: 'fast-charger', title: 'Tooki 20W Quick Charge 3.0 Adapter', price: 1450, rating: 4.6, icon: '<img src="https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp" alt="toocki tct1c jcd01 20w gan usb c fast charging power adapter pakistan priceoye odbhe 500x500" border="0">' },
-            { id: 104, category: 'fast-charger', title: 'Samsung 25 Watt Super Fast Adopter', price: 1200, rating: 4.7, icon: '<img src="https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png" alt="S809124c654464fd3bc8f946e268adb98g" border="0">' },
-            { id: 105, category: 'fast-charger', title: '67 Watt USB-C GAN mini Charger', price: 3450, rating: 4.9, icon: '<img src="https://i.ibb.co/Dgvzp71P/mcdodo-ch-097-67w-ultimate-mini-gan-next-gen-super-fast-charging-power-adapter-pakistan-priceoye-mqo.webp" alt="mcdodo ch 097 67w ultimate mini gan next gen super fast charging power adapter pakistan priceoye mqo" border="0">' },
+            { id: 102, category: 'fast-charger', title: 'Tooki 25W C-C Super Fast Adapter', price: 1850, rating: 4.8, icon: '<img src="https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp" alt="toocki" border="0">' },
+            { id: 103, category: 'fast-charger', title: 'Tooki 20W Quick Charge 3.0 Adapter', price: 1450, rating: 4.6, icon: '<img src="https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp" alt="toocki" border="0">' },
+            { id: 104, category: 'fast-charger', title: 'Samsung 25 Watt Super Fast Adopter', price: 1200, rating: 4.7, icon: '<img src="https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png" alt="Samsung" border="0">' },
+            { id: 105, category: 'fast-charger', title: '67 Watt USB-C GAN mini Charger', price: 3450, rating: 4.9, icon: '<img src="https://i.ibb.co/Dgvzp71P/mcdodo-ch-097-67w-ultimate-mini-gan-next-gen-super-fast-charging-power-adapter-pakistan-priceoye-mqo.webp" alt="Charger" border="0">' },
 
             // Earbuds
-            { id: 201, category: 'earbuds', title: 'Lenovo GM3 Earbuds', price: 3499, rating: 4.9, icon: '<img src="https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg" alt="34494723 000b 406c 9dfd d984f3bdd48c" border="0">' },
-            { id: 202, category: 'earbuds', title: 'Leyell ENC Earbuds', price: 2499, rating: 4.7, icon: '<img src="https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg" alt="c65ac846 6c8f 46f6 b6de 3bfeef95e735" border="0">' },
-            { id: 203, category: 'earbuds', title: 'U55 Wireless Extra Bass Earbuds', price: 1999, rating: 4.5, icon: '<img src="https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg" alt="f9c0c972 fbae 4ac8 88fa 0c9009c6f862" border="0">' },
-            { id: 204, category: 'earbuds', title: 'Ronin Eclipse | R-7065 ANC|ENC', price: 6450, rating: 4.6, icon: '<img src="https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg" alt="81dbaf9b dec5 4cf7 9362 05f19bdc8017" border="0">' },
-            { id: 205, category: 'earbuds', title: 'Ronin Lucid | R-7135 ENC|ANC', price: 6150, rating: 4.4, icon: '<img src="https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg" alt="e64648f8 60f1 4cb8 b667 0797bc2a2457" border="0">' },
+            { id: 201, category: 'earbuds', title: 'Lenovo GM3 Earbuds', price: 3499, rating: 4.9, icon: '<img src="https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg" alt="Lenovo" border="0">' },
+            { id: 202, category: 'earbuds', title: 'Leyell ENC Earbuds', price: 2499, rating: 4.7, icon: '<img src="https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg" alt="Earbuds" border="0">' },
+            { id: 203, category: 'earbuds', title: 'U55 Wireless Extra Bass Earbuds', price: 1999, rating: 4.5, icon: '<img src="https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg" alt="Earbuds" border="0">' },
+            { id: 204, category: 'earbuds', title: 'Ronin Eclipse | R-7065 ANC|ENC', price: 6450, rating: 4.6, icon: '<img src="https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg" alt="Ronin" border="0">' },
+            { id: 205, category: 'earbuds', title: 'Ronin Lucid | R-7135 ENC|ANC', price: 6150, rating: 4.4, icon: '<img src="https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg" alt="Ronin" border="0">' },
 
             // Power Banks
             { id: 301, category: 'power-banks', title: '20,000mAh 22.5W Fast Power Bank', price: 4200, rating: 4.8, icon: '🔋' },
@@ -380,8 +439,9 @@
         ];
 
         let cart = [];
+        let currentCheckoutProduct = null;
 
-        // Render products into their respective category sections
+        // Render products into their respective category sections with "Order Now" button
         function renderProducts() {
             const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-covers'];
             
@@ -399,7 +459,7 @@
                         </span>
 
                         <!-- Product Visual Placeholder -->
-                        <div class="w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300">
+                        <div class="w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
                             ${product.icon}
                         </div>
 
@@ -415,14 +475,14 @@
                             </h3>
                         </div>
 
-                        <!-- Price & Action -->
-                        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-1">
+                        <!-- Price & Order Now Button -->
+                        <div class="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
                             <div>
                                 <span class="text-[10px] text-slate-400 block font-medium">Price</span>
                                 <span class="text-blue-600 font-extrabold text-xs sm:text-sm">PKR ${product.price.toLocaleString()}</span>
                             </div>
-                            <button onclick="addToCart(${product.id})" class="bg-blue-600 hover:bg-blue-700 text-white w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition shadow-md shadow-blue-500/20 active:scale-95">
-                                <i class="fas fa-plus text-xs"></i>
+                            <button onclick="openOrderModal(${product.id})" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-xs font-bold transition shadow-md shadow-blue-500/20 active:scale-95 flex items-center justify-center gap-1.5">
+                                <i class="fas fa-bolt text-[10px]"></i> Order Now
                             </button>
                         </div>
                     </div>
@@ -430,72 +490,79 @@
             });
         }
 
-        // Add to Cart Logic
-        function addToCart(productId) {
+        // Open Order Modal for specific product
+        function openOrderModal(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
-            const existingIndex = cart.findIndex(item => item.id === productId);
-            if (existingIndex > -1) {
-                cart[existingIndex].quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-
-            updateCartUI();
-            showToast('Added to Cart', `${product.title} added successfully!`);
+            currentCheckoutProduct = product;
+            document.getElementById('checkoutProductName').textContent = product.title;
+            document.getElementById('checkoutProductPrice').textContent = `PKR ${product.price.toLocaleString()}`;
+            
+            document.getElementById('orderModal').classList.remove('hidden');
         }
 
-        // Remove from cart
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartUI();
+        // Close Order Modal
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+            currentCheckoutProduct = null;
         }
 
-        // Update Cart Count and Drawer Content
-        function updateCartUI() {
-            const cartCountElement = document.getElementById('cartCount');
-            const cartItemsContainer = document.getElementById('cartItemsContainer');
-            const cartSubtotal = document.getElementById('cartSubtotal');
-            const emptyCartMessage = document.getElementById('emptyCartMessage');
+        // Handle Order Form Submission & WhatsApp Redirect
+        function submitOrder(event) {
+            event.preventDefault();
 
-            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-            cartCountElement.textContent = totalItems;
+            if (!currentCheckoutProduct) return;
 
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            // Format message for WhatsApp
+            const message = `🛍️ *New Order Received! - H. Mobile Zone*\n\n` +
+                            `📦 *Product:* ${currentCheckoutProduct.title}\n` +
+                            `💰 *Price:* PKR ${currentCheckoutProduct.price.toLocaleString()}\n\n` +
+                            `👤 *Customer Name:* ${name}\n` +
+                            `📱 *Mobile Number:* ${phone}\n` +
+                            `📍 *Delivery Address:* ${address}\n` +
+                            `💳 *Payment Method:* ${paymentMethod}\n\n` +
+                            `Please confirm this order!`;
+
+            // Replace with your shop's WhatsApp number (e.g. 923001234567)
+            const whatsappNumber = "923001234567"; 
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            // Close modal & open WhatsApp
+            closeOrderModal();
+            showToast('Order Placed!', 'Redirecting to WhatsApp to send order details...');
+            
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+            }, 1000);
+        }
+
+        // Proceed from Cart Drawer to Checkout
+        function openCheckoutModalDirect() {
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '';
-                cartItemsContainer.appendChild(emptyCartMessage);
-                emptyCartMessage.classList.remove('hidden');
-                cartSubtotal.textContent = 'PKR 0';
+                showToast('Cart Empty', 'Please add items to your cart first.');
                 return;
             }
 
-            emptyCartMessage.classList.add('hidden');
+            // Calculate total cart details
+            const totalAmount = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            const itemsListText = cart.map(item => `${item.title} (x${item.quantity})`).join(', ');
 
-            let total = 0;
-            cartItemsContainer.innerHTML = cart.map(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                return `
-                    <div class="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200/60">
-                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-sm">
-                            ${item.icon}
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-xs font-bold text-slate-800 line-clamp-1">${item.title}</h4>
-                            <p class="text-[11px] text-blue-600 font-semibold">PKR ${item.price.toLocaleString()} x ${item.quantity}</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-xs font-bold text-slate-700">PKR ${itemTotal.toLocaleString()}</span>
-                            <button onclick="removeFromCart(${item.id})" class="text-red-400 hover:text-red-600 p-1 text-xs">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            currentCheckoutProduct = {
+                title: `Cart Items: ${itemsListText}`,
+                price: totalAmount
+            };
 
-            cartSubtotal.textContent = `PKR ${total.toLocaleString()}`;
+            document.getElementById('checkoutProductName').textContent = currentCheckoutProduct.title;
+            document.getElementById('checkoutProductPrice').textContent = `Total: PKR ${totalAmount.toLocaleString()}`;
+            
+            toggleCartModal();
+            document.getElementById('orderModal').classList.remove('hidden');
         }
 
         // Toggle Drawer Modal
@@ -522,27 +589,17 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return;
             }
-            const el = document.getElementById(id);
-            if (el) {
-                const offset = 130;
-                const bodyRect = document.body.getBoundingClientRect().top;
-                const elementRect = el.getBoundingClientRect().top;
-                const elementPosition = elementRect - bodyRect;
-                const offsetPosition = elementPosition - offset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // Real-time Search Filter
+        // Filter Products by Search
         function filterProducts() {
-            const desktopQuery = document.getElementById('searchInput').value.toLowerCase();
-            const mobileQuery = document.getElementById('mobileSearchInput').value.toLowerCase();
-            const query = desktopQuery || mobileQuery;
-
+            const query = (document.getElementById('searchInput').value || document.getElementById('mobileSearchInput').value).toLowerCase();
+            
+            // Basic live search highlighting or hiding cards
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
@@ -554,20 +611,8 @@
             });
         }
 
-        // Checkout Simulation
-        function checkout() {
-            if (cart.length === 0) {
-                showToast('Cart Empty', 'Please add items before checking out.');
-                return;
-            }
-            alert('Thank you for ordering with H. Mobile Zone!\nYour order request has been received. "Quality never compromised"');
-            cart = [];
-            updateCartUI();
-            toggleCartModal();
-        }
-
-        // Initialize Store on window load
-        window.onload = function() {
+        // Initial render on page load
+        window.onload = () => {
             renderProducts();
         };
     </script>
