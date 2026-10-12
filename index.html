@@ -1,677 +1,484 @@
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: #f8fafc;
-        color: #1e293b;
-
-    }
-    
-    /* Custom 5-column grid for wide desktops */
-    @media (min-width: 1280px) {
-        .grid-cols-5-custom {
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-        }
-    }
-
-    .glass-header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-    }
-
-    .product-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .product-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px -10px rgba(0, 102, 255, 0.18);
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #2563eb;
-        border-radius: 4px;
-    }
-</style>
-
-
-<!-- Top Bar -->
-<div class="bg-blue-600 text-white text-xs py-2 px-4 text-center font-medium shadow-inner">
-    ⚡ Free Delivery across Pakistan on orders over PKR 3,000! | <span class="underline">Order Now</span>
-</div>
-
-<!-- Header Navigation -->
-<header class="sticky top-0 z-40 glass-header border-b border-blue-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-        
-        <!-- Logo Section -->
-        <a href="#" class="flex items-center gap-3 group">
-            <div class="w-12 h-12 bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform duration-300">
-                <svg class="w-8 h-8 text-white" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-                    <path d="M29 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-                    <path d="M11 20H29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-                    <rect x="17" y="14" width="6" height="12" rx="1.5" fill="#38bdf8" />
-                    <circle cx="20" cy="24" r="0.8" fill="white"/>
-                </svg>
-            </div>
-            <div>
-                <span class="text-2xl font-black tracking-tight text-slate-800">H. <span class="text-blue-600">Mobile Zone</span></span>
-                <p class="text-[10px] font-semibold tracking-widest uppercase text-blue-600 -mt-1">Quality Never Compromised</p>
-            </div>
-        </a>
-
-        <!-- Search Bar -->
-        <div class="hidden md:flex flex-1 max-w-md relative">
-            <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search chargers, earbuds, covers..." 
-                   class="w-full bg-slate-50 border border-slate-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
-            <i class="fas font-thin fa-search absolute left-4 top-3.5 text-slate-400"></i>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="flex items-center gap-4">
-            <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors">
-                <i class="fas fa-shopping-bag text-lg"></i>
-                <span id="cartCount" class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- Category Nav Links -->
-    <nav class="bg-blue-50/50 border-t border-blue-100 overflow-x-auto">
-        <div class="max-w-7xl mx-auto px-4 flex gap-2 sm:gap-6 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap">
-            <button onclick="scrollToSection('all')" class="px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">All Products</button>
-            <button onclick="scrollToSection('fast-charger')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">⚡ Fast Chargers</button>
-            <button onclick="scrollToSection('earbuds')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🎧 Earbuds</button>
-            <button onclick="scrollToSection('power-banks')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔋 Power Banks</button>
-            <button onclick="scrollToSection('speakers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔊 Speakers</button>
-            <button onclick="scrollToSection('mobile-covers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">📱 Mobile Covers</button>
-        </div>
-    </nav>
-</header>
-
-<!-- Hero Banner -->
-<section class="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 text-white py-12 md:py-16 px-4">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-8">
-        <div class="space-y-4 text-center md:text-left">
-            <span class="bg-blue-500/30 text-blue-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block border border-blue-400/30">
-                Premium Quality Accessories
-            </span>
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-                Upgrade Your Tech Experience
-            </h1>
-            <p class="text-blue-100 text-lg max-w-lg font-light">
-                "Quality never compromised." Discover authentic fast chargers, crystal-clear earbuds, durable power banks, and stylish cases.
-            </p>
-            <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
-                <a href="#fast-charger" class="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-bold text-sm shadow-md transition">Explore Catalog</a>
-                <a href="#power-banks" class="bg-blue-800/40 hover:bg-blue-800/60 border border-white/20 px-6 py-3 rounded-xl font-bold text-sm transition">Best Sellers</a>
-            </div>
-        </div>
-        
-        <div class="hidden md:flex justify-center">
-            <div class="relative w-80 h-80 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 flex flex-col justify-between shadow-2xl">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-sm">100% Genuine</h3>
-                        <p class="text-xs text-blue-100">Guaranteed Brand Warranty</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
-                        <i class="fas fa-truck-fast"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-sm">Fast Dispatch</h3>
-                        <p class="text-xs text-blue-100">24-48 Hour Express Delivery</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-sm">Customer Support</h3>
-                        <p class="text-xs text-blue-100">WhatsApp Help 24/7</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Main Content Container -->
-<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
-
-    <!-- Mobile Search Input -->
-    <div class="md:hidden">
-        <input type="text" id="mobileSearchInput" oninput="filterProducts()" placeholder="Search accessories..." 
-               class="w-full bg-white border border-slate-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-blue-500 shadow-sm">
-    </div>
-
-    <!-- Fast Charger Section -->
-    <section id="fast-charger" class="category-section">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">⚡</div>
-                <h2 class="text-xl font-bold text-slate-800">Fast Chargers</h2>
-            </div>
-            <span class="text-xs text-slate-500 font-medium">5 Items</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-fast-charger"></div>
-    </section>
-
-    <!-- Earbuds Section -->
-    <section id="earbuds" class="category-section">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🎧</div>
-                <h2 class="text-xl font-bold text-slate-800">Wireless Earbuds</h2>
-            </div>
-            <span class="text-xs text-slate-500 font-medium">5 Items</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-earbuds"></div>
-    </section>
-
-    <!-- Power Banks Section -->
-    <section id="power-banks" class="category-section">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🔋</div>
-                <h2 class="text-xl font-bold text-slate-800">Power Banks</h2>
-            </div>
-            <span class="text-xs text-slate-500 font-medium">5 Items</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-power-banks"></div>
-    </section>
-
-    <!-- Speakers Section -->
-    <section id="speakers" class="category-section">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🔊</div>
-                <h2 class="text-xl font-bold text-slate-800">Bluetooth Speakers</h2>
-            </div>
-            <span class="text-xs text-slate-500 font-medium">5 Items</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-speakers"></div>
-    </section>
-
-    <!-- Mobile Covers Section -->
-    <section id="mobile-covers" class="category-section">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">📱</div>
-                <h2 class="text-xl font-bold text-slate-800">Mobile Covers</h2>
-            </div>
-            <span class="text-xs text-slate-500 font-medium">5 Items</span>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-mobile-covers"></div>
-    </section>
-
-</main>
-
-<!-- Cart Modal Drawer -->
-<div id="cartModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden transition-opacity">
-    <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
-        <!-- Modal Header -->
-        <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-blue-600 text-white">
-            <h3 class="font-bold text-lg flex items-center gap-2">
-                <i class="fas fa-shopping-bag"></i> Shopping Cart
-            </h3>
-            <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-800 transition">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <!-- Items Container -->
-        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
-            <div id="emptyCartMessage" class="text-center py-16 text-slate-400">
-                <i class="fas fa-shopping-basket text-5xl mb-3 text-slate-200"></i>
-                <p class="font-medium">Your cart is currently empty</p>
-                <p class="text-xs text-slate-400 mt-1">Browse our store and add accessories!</p>
-            </div>
-        </div>
-
-        <!-- Cart Footer -->
-        <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
-            <div class="flex justify-between font-bold text-slate-800 text-base">
-                <span>Subtotal:</span>
-                <span id="cartSubtotal" class="text-blue-600">PKR 0</span>
-            </div>
-            <button onclick="openCheckoutModalDirect()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
-                Proceed to Checkout
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- Order Now / Checkout Modal Window -->
-<div id="orderModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col max-h-[90vh]">
-        <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
-            <h3 class="font-bold text-lg"><i class="fas fa-bolt mr-2"></i> Quick Order / Checkout</h3>
-            <button onclick="closeOrderModal()" class="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-800 transition">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="p-6 overflow-y-auto space-y-5">
-            <!-- Order Summary Box -->
-            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Selected Product</h4>
-                <p id="checkoutProductName" class="font-bold text-sm text-slate-800">-</p>
-                <p id="checkoutProductPrice" class="text-blue-600 font-extrabold text-sm">-</p>
-            </div>
-
-            <!-- Customer Details Form -->
-            <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
-                    <input type="text" id="custName" required placeholder="Ahmad Ali" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Number (WhatsApp preferred)</label>
-                    <input type="tel" id="custPhone" required placeholder="03001234567" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Full Delivery Address</label>
-                    <textarea id="custAddress" required rows="2" placeholder="House No, Street, Area, City" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500"></textarea>
-                </div>
-
-                <!-- Payment Options -->
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-2">Select Payment Method</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                            <input type="radio" name="paymentMethod" value="JazzCash" checked class="text-blue-600" onchange="togglePaymentInstructions()">
-                            <span class="text-xs font-bold">JazzCash</span>
-                        </label>
-                        <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                            <input type="radio" name="paymentMethod" value="EasyPaisa" class="text-blue-600" onchange="togglePaymentInstructions()">
-                            <span class="text-xs font-bold">EasyPaisa</span>
-                        </label>
-                        <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                            <input type="radio" name="paymentMethod" value="Bank Transfer" class="text-blue-600" onchange="togglePaymentInstructions()">
-                            <span class="text-xs font-bold">Bank Account</span>
-                        </label>
-                        <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                            <input type="radio" name="paymentMethod" value="Cash on Delivery" class="text-blue-600" onchange="togglePaymentInstructions()">
-                            <span class="text-xs font-bold">Cash on Delivery</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Payment / Advance Notice Box -->
-                <div id="paymentInstructions" class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 space-y-1">
-                    <p class="font-bold"><i class="fas fa-info-circle mr-1"></i> Payment Account Details:</p>
-                    <p><strong>JazzCash / EasyPaisa:</strong> 03349116077 (Muhammad Huzaifa)</p>
-                    <p><strong>Bank Account (Bank Al Habib):</strong> 11080095014427017</p>
-                    <p class="text-[11px] text-slate-600 mt-1">Please send payment to the above account before confirming.</p>
-                </div>
-
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
-                    Confirm Order & Send via WhatsApp 🚀
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Toast Notification -->
-<div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
-    <div class="w-7 h-7 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold">✓</div>
-    <div>
-        <p class="text-xs font-bold" id="toastTitle">Added to Cart</p>
-        <p class="text-[11px] text-slate-300" id="toastMessage">Item has been added to your shopping bag.</p>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-slate-900 text-slate-300 mt-16 text-sm border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="space-y-3">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-sm">H</div>
-                <span class="text-lg font-bold text-white">H. Mobile Zone</span>
-            </div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-                Your trusted destination for genuine mobile accessories in Pakistan. Fast shipping, guaranteed quality, and competitive prices.
-            </p>
-            <p class="text-xs font-semibold text-blue-400">"Quality never compromised"</p>
-        </div>
-
-        <div>
-            <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Quick Categories</h4>
-            <ul class="space-y-2 text-xs text-slate-400">
-                <li><a href="#fast-charger" class="hover:text-white transition">Fast Chargers</a></li>
-                <li><a href="#earbuds" class="hover:text-white transition">Wireless Earbuds</a></li>
-                <li><a href="#power-banks" class="hover:text-white transition">Power Banks</a></li>
-                <li><a href="#speakers" class="hover:text-white transition">Speakers</a></li>
-                <li><a href="#mobile-covers" class="hover:text-white transition">Mobile Covers</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Customer Support</h4>
-            <ul class="space-y-2 text-xs text-slate-400">
-                <li><i class="fab fa-whatsapp text-green-400 mr-2"></i> 03349116077</li>
-                <li><i class="fas fa-envelope text-blue-400 mr-2"></i> huzaifa.siddique1237@gmail.com</li>
-                <li><i class="fas fa-map-marker-alt text-red-400 mr-2"></i> Mehmoodabad Number 3, Karachi, Pakistan</li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Payment Methods</h4>
-            <p class="text-xs text-slate-400 mb-3">Cash on Delivery (COD) / JazzCash / EasyPaisa / Bank Transfer</p>
-            <div class="flex gap-2">
-                <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">COD</span>
-                <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">JazzCash</span>
-                <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">EasyPaisa</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
-        © 2026 H. Mobile Zone. All Rights Reserved. GitHub Pages Ready Web App.
-    </div>
-</footer>
-
-<script>
-    // Database of Products
-    const products = [
-        // Fast Chargers
-        { id: 101, category: 'fast-charger', title: 'Google Pixel Rapid Charger', price: 2000, rating: 4.9, icon: '<img src="https://i.ibb.co/S4jgWNcY/images.jpg" alt="images" border="0">' },
-        { id: 102, category: 'fast-charger', title: 'Tooki 25W C-C Super Fast Adapter', price: 1850, rating: 4.8, icon: '<img src="https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp" alt="toocki" border="0">' },
-        { id: 103, category: 'fast-charger', title: 'Tooki 20W Quick Charge 3.0 Adapter', price: 1450, rating: 4.6, icon: '<img src="https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp" alt="toocki" border="0">' },
-        { id: 104, category: 'fast-charger', title: 'Samsung 25 Watt Super Fast Adopter', price: 1200, rating: 4.7, icon: '<img src="https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png" alt="Samsung" border="0">' },
-        { id: 105, category: 'fast-charger', title: '67 Watt USB-C GAN mini Charger', price: 3450, rating: 4.9, icon: '<img src="https://i.ibb.co/Dgvzp71P/mcdodo-ch-097-67w-ultimate-mini-gan-next-gen-super-fast-charging-power-adapter-pakistan-priceoye-mqo.webp" alt="Charger" border="0">' },
-
-        // Earbuds
-        { id: 201, category: 'earbuds', title: 'Lenovo GM3 Earbuds', price: 3499, rating: 4.9, icon: '<img src="https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg" alt="Lenovo" border="0">' },
-        { id: 202, category: 'earbuds', title: 'Leyell ENC Earbuds', price: 2499, rating: 4.7, icon: '<img src="https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg" alt="Earbuds" border="0">' },
-        { id: 203, category: 'earbuds', title: 'U55 Wireless Extra Bass Earbuds', price: 1999, rating: 4.5, icon: '<img src="https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg" alt="Earbuds" border="0">' },
-        { id: 204, category: 'earbuds', title: 'Ronin Eclipse | R-7065 ANC|ENC', price: 6450, rating: 4.6, icon: '<img src="https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg" alt="Ronin" border="0">' },
-        { id: 205, category: 'earbuds', title: 'Ronin Lucid | R-7135 ENC|ANC', price: 6150, rating: 4.4, icon: '<img src="https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg" alt="Ronin" border="0">' },
-
-        // Power Banks
-        { id: 301, category: 'power-banks', title: '20,000mAh 22.5W Fast Power Bank', price: 4200, rating: 4.8, icon: '🔋' },
-        { id: 302, category: 'power-banks', title: '10,000mAh Slim Pocket Battery', price: 2850, rating: 4.7, icon: '📱' },
-        { id: 303, category: 'power-banks', title: 'Magnetic Wireless Power Bank 5K', price: 3950, rating: 4.6, icon: '⚡' },
-        { id: 304, category: 'power-banks', title: '30,000mAh Heavy Duty Power Pack', price: 5900, rating: 4.9, icon: '🏢' },
-        { id: 305, category: 'power-banks', title: 'Solar Outdoor Charging Bank 10K', price: 3400, rating: 4.5, icon: '☀️' },
-
-        // Speakers
-        { id: 401, category: 'speakers', title: 'Portable Bluetooth Speaker 10W', price: 2990, rating: 4.8, icon: '🔊' },
-        { id: 402, category: 'speakers', title: 'Mini Metal Wireless Speaker', price: 1650, rating: 4.6, icon: '📻' },
-        { id: 403, category: 'speakers', title: 'Waterproof Outdoor Sound Box', price: 4500, rating: 4.9, icon: '🌊' },
-        { id: 404, category: 'speakers', title: 'RGB Light Party Speaker 20W', price: 5200, rating: 4.7, icon: '✨' },
-        { id: 405, category: 'speakers', title: 'Desktop Soundbar Dual Driver', price: 3800, rating: 4.5, icon: '📺' },
-
-        // Mobile Covers
-        { id: 501, category: 'mobile-covers', title: 'MagSafe Matte Shield Case', price: 950, rating: 4.9, icon: '📱' },
-        { id: 502, category: 'mobile-covers', title: 'Transparent Shockproof Corner Case', price: 650, rating: 4.7, icon: '🛡️' },
-        { id: 503, category: 'mobile-covers', title: 'Luxury Leather Wallet Flip Cover', price: 1250, rating: 4.8, icon: '💼' },
-        { id: 504, category: 'mobile-covers', title: 'Silicone Soft Touch Velvet Case', price: 800, rating: 4.6, icon: '🎨' },
-        { id: 505, category: 'mobile-covers', title: 'Armor Kickstand Rugged Case', price: 1100, rating: 4.7, icon: '🤖' },
-    ];
-
-    let cart = [];
-    let currentCheckoutProduct = null;
-
-    // Render products into their respective category sections
-    function renderProducts() {
-        const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-covers'];
-        
-        categories.forEach(cat => {
-            const container = document.getElementById(`grid-${cat}`);
-            if (!container) return;
-
-            const catProducts = products.filter(p => p.category === cat);
-            container.innerHTML = catProducts.map(product => `
-                <div class="product-card bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:border-blue-300 relative group">
-                    
-                    <!-- Badge -->
-                    <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100">
-                        Verified
-                    </span>
-
-                    <!-- Product Visual Placeholder -->
-                    <div class="w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                        ${product.icon}
-                    </div>
-
-                    <!-- Product Information -->
-                    <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
-                            <i class="fas fa-star"></i>
-                            <span class="font-bold text-slate-700">${product.rating}</span>
-                            <span class="text-slate-400 text-[10px]">(50+)</span>
-                        </div>
-                        <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 mb-2 leading-snug" title="${product.title}">
-                            ${product.title}
-                        </h3>
-                    </div>
-
-                    <!-- Price & Order Now Button -->
-                    <div class="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
-                        <div>
-                            <span class="text-[10px] text-slate-400 block font-medium">Price</span>
-                            <span class="text-blue-600 font-extrabold text-xs sm:text-sm">PKR ${product.price.toLocaleString()}</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="addToCart(${product.id})" class="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold py-2 rounded-xl text-xs transition">
-                                Add
-                            </button>
-                            <button onclick="openCheckoutModal(${product.id})" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition shadow-sm">
-                                Order Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        });
-    }
-
-    // Toggle Payment Instructions based on selected payment method
-    function togglePaymentInstructions() {
-        const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-        const instructionsDiv = document.getElementById('paymentInstructions');
-        
-        if (selectedMethod === 'Cash on Delivery') {
-            instructionsDiv.innerHTML = `
-                <p class="font-bold text-amber-700"><i class="fas fa-exclamation-triangle mr-1"></i> Cash on Delivery Policy:</p>
-                <p class="text-amber-900 font-semibold mt-1">Order book karne ke liye <strong>PKR 500 advance payment</strong> karna compulsory hai.</p>
-                <p class="text-[11px] text-slate-600 mt-1">Baqi amount (Remaining balance) delivery ke waqt cash pay karna hoga.</p>
-                <p class="mt-2"><strong>Advance JazzCash / EasyPaisa:</strong> 03349116077 (Muhammad Huzaifa)</p>
-            `;
-            instructionsDiv.className = "bg-amber-50 p-3 rounded-xl border border-amber-200 text-xs text-amber-900 space-y-1";
-        } else {
-            instructionsDiv.innerHTML = `
-                <p class="font-bold"><i class="fas fa-info-circle mr-1"></i> Payment Account Details:</p>
-                <p><strong>JazzCash / EasyPaisa:</strong> 03349116077 (Muhammad Huzaifa)</p>
-                <p><strong>Bank Account (Bank Al Habib):</strong> 11080095014427017</p>
-                <p class="text-[11px] text-slate-600 mt-1">Please send payment to the above account before confirming.</p>
-            `;
-            instructionsDiv.className = "bg-blue-50 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 space-y-1";
-        }
-    }
-
-    // Cart Functions
-    function addToCart(productId) {
-        const product = products.find(p => p.id === productId);
-        if (!product) return;
-
-        const existingItem = cart.find(item => item.id === productId);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-
-        updateCartUI();
-        showToast('Added to Cart', `${product.title} has been added.`);
-    }
-
-    function updateCartUI() {
-        const cartCount = document.getElementById('cartCount');
-        const cartItemsContainer = document.getElementById('cartItemsContainer');
-        const emptyCartMessage = document.getElementById('emptyCartMessage');
-        const cartSubtotal = document.getElementById('cartSubtotal');
-
-        const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartCount.textContent = totalCount;
-
-        if (cart.length === 0) {
-            emptyCartMessage.classList.remove('hidden');
-            cartItemsContainer.innerHTML = '';
-            cartItemsContainer.appendChild(emptyCartMessage);
-            cartSubtotal.textContent = 'PKR 0';
-            return;
-        }
-
-        emptyCartMessage.classList.add('hidden');
-        let subtotal = 0;
-
-        cartItemsContainer.innerHTML = cart.map(item => {
-            subtotal += item.price * item.quantity;
-            return `
-                <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-2xl border border-slate-200 overflow-hidden">
-                            ${item.icon}
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xs text-slate-800 line-clamp-1">${item.title}</h4>
-                            <p class="text-blue-600 font-extrabold text-xs">PKR ${item.price.toLocaleString()} x ${item.quantity}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="changeQuantity(${item.id}, -1)" class="w-6 h-6 bg-slate-200 rounded flex items-center justify-center hover:bg-slate-300">-</button>
-                        <span class="text-xs font-bold">${item.quantity}</span>
-                        <button onclick="changeQuantity(${item.id}, 1)" class="w-6 h-6 bg-slate-200 rounded flex items-center justify-center hover:bg-slate-300">+</button>
-                    </div>
-                </div>
-            `;
-        }).join('');
-
-        cartSubtotal.textContent = `PKR ${subtotal.toLocaleString()}`;
-    }
-
-    function changeQuantity(productId, delta) {
-        const item = cart.find(i => i.id === productId);
-        if (!item) return;
-        item.quantity += delta;
-        if (item.quantity <= 0) {
-            cart = cart.filter(i => i.id !== productId);
-        }
-        updateCartUI();
-    }
-
-    function toggleCartModal() {
-        const modal = document.getElementById('cartModal');
-        modal.classList.toggle('hidden');
-    }
-
-    function openCheckoutModal(productId) {
-        const product = products.find(p => p.id === productId);
-        if (!product) return;
-        currentCheckoutProduct = product;
-
-        document.getElementById('checkoutProductName').textContent = product.title;
-        document.getElementById('checkoutProductPrice').textContent = `PKR ${product.price.toLocaleString()}`;
-        document.getElementById('orderModal').classList.remove('hidden');
-        togglePaymentInstructions(); // Reset instructions on modal open
-    }
-
-    function openCheckoutModalDirect() {
-        if (cart.length === 0) {
-            alert('Your cart is empty!');
-            return;
-        }
-        toggleCartModal();
-        currentCheckoutProduct = null;
-
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        document.getElementById('checkoutProductName').textContent = `Cart Items (${cart.reduce((s, i) => s + i.quantity, 0)} items)`;
-        document.getElementById('checkoutProductPrice').textContent = `Total: PKR ${total.toLocaleString()}`;
-        document.getElementById('orderModal').classList.remove('hidden');
-        togglePaymentInstructions(); // Reset instructions on modal open
-    }
-
-    function closeOrderModal() {
-        document.getElementById('orderModal').classList.add('hidden');
-    }
-
-    function submitOrder(event) {
-        event.preventDefault();
-        const name = document.getElementById('custName').value;
-        const phone = document.getElementById('custPhone').value;
-        const address = document.getElementById('custAddress').value;
-        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-
-        let orderText = `*New Order - H. Mobile Zone*\n\n`;
-        orderText += `*Name:* ${name}\n`;
-        orderText += `*Phone:* ${phone}\n`;
-        orderText += `*Address:* ${address}\n`;
-        orderText += `*Payment Method:* ${paymentMethod}\n`;
-        
-        if (paymentMethod === 'Cash on Delivery') {
-            orderText += `*(Note: PKR 500 Advance Payment Compulsory for Order Booking)*\n`;
-        }
-        
-        orderText += `\n*Ordered Items:*\n`;
-
-        if (currentCheckoutProduct) {
-            orderText += `- ${currentCheckoutProduct.title} (PKR ${currentCheckoutProduct.price.toLocaleString()})\n`;
-        } else {
-            cart.forEach(item => {
-                orderText += `- ${item.title} x ${item.quantity} (PKR ${(item.price * item.quantity).toLocaleString()})\n`;
-            });
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            orderText += `\n*Total Amount:* PKR ${total.toLocaleString()}`;
-        }
-
-        const whatsappUrl = `https://wa.me/923349116077?text=${encodeURIComponent(orderText)}`;
-        window.open(whatsappUrl, '_blank');
-        closeOrderModal();
-    }
-
-    function showToast(title, message) {
-        const toast = document.getElementById('toast');
-        document.getElementById('toastTitle').textContent = title;
-        document.getElementById('toastMessage').textContent = message;
-        toast.classList.remove('translate-y-20', 'opacity-0');
-        setTimeout(() => {
-            toast.classList.add('translate-y-20', 'opacity-0');
-        }, 3000);
-    }
-
-    function filterProducts() {
-        const query = document.getElementById('searchInput').value.toLowerCase() || document.getElementById('mobileSearchInput').value.toLowerCase();
-        // Simple filtering or scroll can be enhanced if needed
-    }
-
-    function scrollToSection(sectionId) {
-        if (sectionId === 'all') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-        }
-        const el = document.getElementById(sectionId);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-
-    // Initial render on load
-    window.onload = renderProducts;
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H. Mobile Zone | Quality Never Compromised</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        /* Custom 5-column grid for wide desktops */
+        @media (min-width: 1280px) {
+            .grid-cols-5-custom {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 102, 255, 0.18);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <div class="bg-blue-600 text-white text-xs py-2 px-4 text-center font-medium shadow-inner">
+        ⚡ Free Delivery across Pakistan on orders over PKR 3,000! | <span class="underline">Order Now</span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-header border-b border-blue-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo Section -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-400 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-white" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+                        <path d="M29 8V32" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+                        <path d="M11 20H29" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+                        <rect x="17" y="14" width="6" height="12" rx="1.5" fill="#38bdf8" />
+                        <circle cx="20" cy="24" r="0.8" fill="white"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-tight text-slate-800">H. <span class="text-blue-600">Mobile Zone</span></span>
+                    <p class="text-[10px] font-semibold tracking-widest uppercase text-blue-600 -mt-1">Quality Never Compromised</p>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-md relative">
+                <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search chargers, earbuds, covers..." 
+                       class="w-full bg-slate-50 border border-slate-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
+                <i class="fas font-thin fa-search absolute left-4 top-3.5 text-slate-400"></i>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors">
+                    <i class="fas fa-shopping-bag text-lg"></i>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Nav Links -->
+        <nav class="bg-blue-50/50 border-t border-blue-100 overflow-x-auto">
+            <div class="max-w-7xl mx-auto px-4 flex gap-2 sm:gap-6 py-2.5 text-xs sm:text-sm font-semibold whitespace-nowrap">
+                <button onclick="scrollToSection('all')" class="px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">All Products</button>
+                <button onclick="scrollToSection('fast-charger')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">⚡ Fast Chargers</button>
+                <button onclick="scrollToSection('earbuds')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🎧 Earbuds</button>
+                <button onclick="scrollToSection('power-banks')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔋 Power Banks</button>
+                <button onclick="scrollToSection('speakers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔊 Speakers</button>
+                <button onclick="scrollToSection('mobile-covers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">📱 Mobile Covers</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 text-white py-12 md:py-16 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-8">
+            <div class="space-y-4 text-center md:text-left">
+                <span class="bg-blue-500/30 text-blue-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block border border-blue-400/30">
+                    Premium Quality Accessories
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                    Upgrade Your Tech Experience
+                </h1>
+                <p class="text-blue-100 text-lg max-w-lg font-light">
+                    "Quality never compromised." Discover authentic fast chargers, crystal-clear earbuds, durable power banks, and stylish cases.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
+                    <a href="#fast-charger" class="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-bold text-sm shadow-md transition">Explore Catalog</a>
+                    <a href="#power-banks" class="bg-blue-800/40 hover:bg-blue-800/60 border border-white/20 px-6 py-3 rounded-xl font-bold text-sm transition">Best Sellers</a>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex justify-center">
+                <div class="relative w-80 h-80 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 flex flex-col justify-between shadow-2xl">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">100% Genuine</h3>
+                            <p class="text-xs text-blue-100">Guaranteed Brand Warranty</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Fast Dispatch</h3>
+                            <p class="text-xs text-blue-100">24-48 Hour Express Delivery</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Customer Support</h3>
+                            <p class="text-xs text-blue-100">WhatsApp Help 24/7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- Mobile Search Input -->
+        <div class="md:hidden">
+            <input type="text" id="mobileSearchInput" oninput="filterProducts()" placeholder="Search accessories..." 
+                   class="w-full bg-white border border-slate-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-blue-500 shadow-sm">
+        </div>
+
+        <!-- Fast Charger Section -->
+        <section id="fast-charger" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">⚡</div>
+                    <h2 class="text-xl font-bold text-slate-800">Fast Chargers</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-fast-charger"></div>
+        </section>
+
+        <!-- Earbuds Section -->
+        <section id="earbuds" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🎧</div>
+                    <h2 class="text-xl font-bold text-slate-800">Wireless Earbuds</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-earbuds"></div>
+        </section>
+
+        <!-- Power Banks Section -->
+        <section id="power-banks" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🔋</div>
+                    <h2 class="text-xl font-bold text-slate-800">Power Banks</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-power-banks"></div>
+        </section>
+
+        <!-- Speakers Section -->
+        <section id="speakers" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">🔊</div>
+                    <h2 class="text-xl font-bold text-slate-800">Bluetooth Speakers</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-speakers"></div>
+        </section>
+
+        <!-- Mobile Covers Section -->
+        <section id="mobile-covers" class="category-section">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">📱</div>
+                    <h2 class="text-xl font-bold text-slate-800">Mobile Covers</h2>
+                </div>
+                <span class="text-xs text-slate-500 font-medium">5 Items</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-mobile-covers"></div>
+        </section>
+
+    </main>
+
+    <!-- Cart Modal Drawer -->
+    <div id="cartModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden transition-opacity">
+        <div class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-blue-600 text-white">
+                <h3 class="font-bold text-lg flex items-center gap-2">
+                    <i class="fas fa-shopping-bag"></i> Shopping Cart
+                </h3>
+                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-800 transition">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Items Container -->
+            <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
+                <div id="emptyCartMessage" class="text-center py-16 text-slate-400">
+                    <i class="fas fa-shopping-basket text-5xl mb-3 text-slate-200"></i>
+                    <p class="font-medium">Your cart is currently empty</p>
+                    <p class="text-xs text-slate-400 mt-1">Browse our store and add accessories!</p>
+                </div>
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
+                <div class="flex justify-between font-bold text-slate-800 text-base">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal" class="text-blue-600">PKR 0</span>
+                </div>
+                <button onclick="openCheckoutModalDirect()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Now / Checkout Modal Window -->
+    <div id="orderModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-blue-600 text-white p-4 flex items-center justify-between">
+                <h3 class="font-bold text-lg"><i class="fas fa-bolt mr-2"></i> Quick Order / Checkout</h3>
+                <button onclick="closeOrderModal()" class="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-800 transition">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-5">
+                <!-- Order Summary Box -->
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Selected Product</h4>
+                    <p id="checkoutProductName" class="font-bold text-sm text-slate-800">-</p>
+                    <p id="checkoutProductPrice" class="text-blue-600 font-extrabold text-sm">-</p>
+                </div>
+
+                <!-- Customer Details Form -->
+                <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+                        <input type="text" id="custName" required placeholder="Ahmad Ali" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Number (WhatsApp preferred)</label>
+                        <input type="tel" id="custPhone" required placeholder="03001234567" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Full Delivery Address</label>
+                        <textarea id="custAddress" required rows="2" placeholder="House No, Street, Area, City" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500"></textarea>
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-2">Select Payment Method</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="JazzCash" checked class="text-blue-600">
+                                <span class="text-xs font-bold">JazzCash</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="EasyPaisa" class="text-blue-600">
+                                <span class="text-xs font-bold">EasyPaisa</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="Bank Transfer" class="text-blue-600">
+                                <span class="text-xs font-bold">Bank Account</span>
+                            </label>
+                            <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="Cash on Delivery" class="text-blue-600">
+                                <span class="text-xs font-bold">Cash on Delivery</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Bank / Account Instruction Box -->
+                    <div id="paymentInstructions" class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 space-y-1">
+                        <p class="font-bold"><i class="fas fa-info-circle mr-1"></i> Payment Account Details:</p>
+                        <p><strong>JazzCash / EasyPaisa:</strong> 03349116077 (Muhammad Huzaifa)</p>
+                        <p><strong>Bank Account (Bank Al Habib):</strong> 11080095014427017</p>
+                        <p class="text-[11px] text-slate-600 mt-1">Please send payment to the above account before confirming, or select Cash on Delivery.</p>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
+                        Confirm Order & Send via WhatsApp 🚀
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div class="w-7 h-7 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold">✓</div>
+        <div>
+            <p class="text-xs font-bold" id="toastTitle">Added to Cart</p>
+            <p class="text-[11px] text-slate-300" id="toastMessage">Item has been added to your shopping bag.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 mt-16 text-sm border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-sm">H</div>
+                    <span class="text-lg font-bold text-white">H. Mobile Zone</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Your trusted destination for genuine mobile accessories in Pakistan. Fast shipping, guaranteed quality, and competitive prices.
+                </p>
+                <p class="text-xs font-semibold text-blue-400">"Quality never compromised"</p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Quick Categories</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><a href="#fast-charger" class="hover:text-white transition">Fast Chargers</a></li>
+                    <li><a href="#earbuds" class="hover:text-white transition">Wireless Earbuds</a></li>
+                    <li><a href="#power-banks" class="hover:text-white transition">Power Banks</a></li>
+                    <li><a href="#speakers" class="hover:text-white transition">Speakers</a></li>
+                    <li><a href="#mobile-covers" class="hover:text-white transition">Mobile Covers</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Customer Support</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><i class="fab fa-whatsapp text-green-400 mr-2"></i> 03349116077</li>
+                    <li><i class="fas fa-envelope text-blue-400 mr-2"></i> huzaifa.siddique1237@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt text-red-400 mr-2"></i> Mehmoodabad Number 3, Karachi, Pakistan</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Payment Methods</h4>
+                <p class="text-xs text-slate-400 mb-3">Cash on Delivery (COD) / JazzCash / EasyPaisa / Bank Transfer</p>
+                <div class="flex gap-2">
+                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">COD</span>
+                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">JazzCash</span>
+                    <span class="bg-slate-800 text-xs px-2 py-1 rounded text-slate-300 font-mono">EasyPaisa</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+            © 2026 H. Mobile Zone. All Rights Reserved. GitHub Pages Ready Web App.
+        </div>
+    </footer>
+
+    <script>
+        // Database of Products
+        const products = [
+            // Fast Chargers
+            { id: 101, category: 'fast-charger', title: 'Google Pixel Rapid Charger', price: 2000, rating: 4.9, icon: '<img src="https://i.ibb.co/S4jgWNcY/images.jpg" alt="images" border="0">' },
+            { id: 102, category: 'fast-charger', title: 'Tooki 25W C-C Super Fast Adapter', price: 1850, rating: 4.8, icon: '<img src="https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp" alt="toocki" border="0">' },
+            { id: 103, category: 'fast-charger', title: 'Tooki 20W Quick Charge 3.0 Adapter', price: 1450, rating: 4.6, icon: '<img src="https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp" alt="toocki" border="0">' },
+            { id: 104, category: 'fast-charger', title: 'Samsung 25 Watt Super Fast Adopter', price: 1200, rating: 4.7, icon: '<img src="https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png" alt="Samsung" border="0">' },
+            { id: 105, category: 'fast-charger', title: '67 Watt USB-C GAN mini Charger', price: 3450, rating: 4.9, icon: '<img src="https://i.ibb.co/Dgvzp71P/mcdodo-ch-097-67w-ultimate-mini-gan-next-gen-super-fast-charging-power-adapter-pakistan-priceoye-mqo.webp" alt="Charger" border="0">' },
+
+            // Earbuds
+            { id: 201, category: 'earbuds', title: 'Lenovo GM3 Earbuds', price: 3499, rating: 4.9, icon: '<img src="https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg" alt="Lenovo" border="0">' },
+            { id: 202, category: 'earbuds', title: 'Leyell ENC Earbuds', price: 2499, rating: 4.7, icon: '<img src="https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg" alt="Earbuds" border="0">' },
+            { id: 203, category: 'earbuds', title: 'U55 Wireless Extra Bass Earbuds', price: 1999, rating: 4.5, icon: '<img src="https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg" alt="Earbuds" border="0">' },
+            { id: 204, category: 'earbuds', title: 'Ronin Eclipse | R-7065 ANC|ENC', price: 6450, rating: 4.6, icon: '<img src="https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg" alt="Ronin" border="0">' },
+            { id: 205, category: 'earbuds', title: 'Ronin Lucid | R-7135 ENC|ANC', price: 6150, rating: 4.4, icon: '<img src="https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg" alt="Ronin" border="0">' },
+
+            // Power Banks
+            { id: 301, category: 'power-banks', title: '20,000mAh 22.5W Fast Power Bank', price: 4200, rating: 4.8, icon: '🔋' },
+            { id: 302, category: 'power-banks', title: '10,000mAh Slim Pocket Battery', price: 2850, rating: 4.7, icon: '📱' },
+            { id: 303, category: 'power-banks', title: 'Magnetic Wireless Power Bank 5K', price: 3950, rating: 4.6, icon: '⚡' },
+            { id: 304, category: 'power-banks', title: '30,000mAh Heavy Duty Power Pack', price: 5900, rating: 4.9, icon: '🏢' },
+            { id: 305, category: 'power-banks', title: 'Solar Outdoor Charging Bank 10K', price: 3400, rating: 4.5, icon: '☀️' },
+
+            // Speakers
+            { id: 401, category: 'speakers', title: 'Portable Bluetooth Speaker 10W', price: 2990, rating: 4.8, icon: '🔊' },
+            { id: 402, category: 'speakers', title: 'Mini Metal Wireless Speaker', price: 1650, rating: 4.6, icon: '📻' },
+            { id: 403, category: 'speakers', title: 'Waterproof Outdoor Sound Box', price: 4500, rating: 4.9, icon: '🌊' },
+            { id: 404, category: 'speakers', title: 'RGB Light Party Speaker 20W', price: 5200, rating: 4.7, icon: '✨' },
+            { id: 405, category: 'speakers', title: 'Desktop Soundbar Dual Driver', price: 3800, rating: 4.5, icon: '📺' },
+
+            // Mobile Covers
+            { id: 501, category: 'mobile-covers', title: 'MagSafe Matte Shield Case', price: 950, rating: 4.9, icon: '📱' },
+            { id: 502, category: 'mobile-covers', title: 'Transparent Shockproof Corner Case', price: 650, rating: 4.7, icon: '🛡️' },
+            { id: 503, category: 'mobile-covers', title: 'Luxury Leather Wallet Flip Cover', price: 1250, rating: 4.8, icon: '💼' },
+            { id: 504, category: 'mobile-covers', title: 'Silicone Soft Touch Velvet Case', price: 800, rating: 4.6, icon: '🎨' },
+            { id: 505, category: 'mobile-covers', title: 'Armor Kickstand Rugged Case', price: 1100, rating: 4.7, icon: '🤖' },
+        ];
+
+        let cart = [];
+        let currentCheckoutProduct = null;
+
+        // Render products into their respective category sections with "Order Now" button
+        function renderProducts() {
+            const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-covers'];
+            
+            categories.forEach(cat => {
+                const container = document.getElementById(`grid-${cat}`);
+                if (!container) return;
+
+                const catProducts = products.filter(p => p.category === cat);
+                container.innerHTML = catProducts.map(product => `
+                    <div class="product-card bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:border-blue-300 relative group">
+                        
+                        <!-- Badge -->
+                        <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100">
+                            Verified
+                        </span>
+
+                        <!-- Product Visual Placeholder -->
+                        <div class="w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                            ${product.icon}
+                        </div>
+
+                        <!-- Product Information -->
+                        <div>
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
+                                <i class="fas fa-star"></i>
+                                <span class="font-bold text-slate-700">${product.rating}</span>
+                                <span class="text-slate-400 text-[10px]">(50+)</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 mb-2 leading-snug" title="${product.title}">
+                                ${product.title}
+                            </h3>
+                        </div>
+
+                        <!-- Price & Order Now Button -->
+                        <div class="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-medium">Price</span>
+                                <span class="text-blue-600 font-extrabold text-xs sm:text-sm">PKR ${product.price.toLocaleString()}</span>
+                            </div>
+           
