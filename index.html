@@ -39,6 +39,15 @@
             box-shadow: 0 12px 24px -10px rgba(0, 102, 255, 0.18);
         }
 
+        /* Image Fit Fix for Desktop & Mobile */
+        .product-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -441,7 +450,7 @@
         let cart = [];
         let currentCheckoutProduct = null;
 
-        // Render products into their respective category sections with "Order Now" button
+        // Render products into their respective category sections with fixed image box
         function renderProducts() {
             const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-covers'];
             
@@ -454,36 +463,38 @@
                     <div class="product-card bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:border-blue-300 relative group">
                         
                         <!-- Badge -->
-                        <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100">
+                        <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100 z-10">
                             Verified
                         </span>
 
-                        <!-- Product Visual Placeholder -->
-                        <div class="w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <!-- Fixed Height Responsive Image Container -->
+                        <div class="product-img-box w-full h-40 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300 p-2">
                             ${product.icon}
                         </div>
 
                         <!-- Product Information -->
-                        <div>
-                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
-                                <i class="fas fa-star"></i>
-                                <span class="font-bold text-slate-700">${product.rating}</span>
-                                <span class="text-slate-400 text-[10px]">(50+)</span>
-                            </div>
-                            <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 mb-2 leading-snug" title="${product.title}">
-                                ${product.title}
-                            </h3>
-                        </div>
-
-                        <!-- Price & Order Now Button -->
-                        <div class="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
+                        <div class="flex-1 flex flex-col justify-between">
                             <div>
-                                <span class="text-[10px] text-slate-400 block font-medium">Price</span>
-                                <span class="text-blue-600 font-extrabold text-xs sm:text-sm">PKR ${product.price.toLocaleString()}</span>
+                                <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
+                                    <i class="fas fa-star"></i>
+                                    <span class="font-bold text-slate-700">${product.rating}</span>
+                                    <span class="text-slate-400 text-[10px]">(50+)</span>
+                                </div>
+                                <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 mb-2 leading-snug" title="${product.title}">
+                                    ${product.title}
+                                </h3>
                             </div>
-                            <button onclick="openOrderModal(${product.id})" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-xs font-bold transition shadow-md shadow-blue-500/20 active:scale-95 flex items-center justify-center gap-1.5">
-                                <i class="fas fa-bolt text-[10px]"></i> Order Now
-                            </button>
+
+                            <!-- Price & Order Now Button -->
+                            <div class="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block font-medium">Price</span>
+                                    <span class="text-blue-600 font-extrabold text-xs sm:text-sm">PKR ${product.price.toLocaleString()}</span>
+                                </div>
+                                <button onclick="openOrderModal(${product.id})" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-xs font-bold transition shadow-md shadow-blue-500/20 active:scale-95 flex items-center justify-center gap-1.5">
+                                    <i class="fas fa-bolt text-[10px]"></i> Order Now
+                                </button>
+                            </div>
                         </div>
                     </div>
                 `).join('');
