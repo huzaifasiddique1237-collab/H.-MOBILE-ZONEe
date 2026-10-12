@@ -306,30 +306,30 @@
                         <label class="block text-xs font-bold text-slate-700 mb-2">Select Payment Method</label>
                         <div class="grid grid-cols-2 gap-2">
                             <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                                <input type="radio" name="paymentMethod" value="JazzCash" checked class="text-blue-600">
+                                <input type="radio" name="paymentMethod" value="JazzCash" checked onchange="togglePaymentNotice()" class="text-blue-600">
                                 <span class="text-xs font-bold">JazzCash</span>
                             </label>
                             <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                                <input type="radio" name="paymentMethod" value="EasyPaisa" class="text-blue-600">
+                                <input type="radio" name="paymentMethod" value="EasyPaisa" onchange="togglePaymentNotice()" class="text-blue-600">
                                 <span class="text-xs font-bold">EasyPaisa</span>
                             </label>
                             <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                                <input type="radio" name="paymentMethod" value="Bank Transfer" class="text-blue-600">
+                                <input type="radio" name="paymentMethod" value="Bank Transfer" onchange="togglePaymentNotice()" class="text-blue-600">
                                 <span class="text-xs font-bold">Bank Account</span>
                             </label>
                             <label class="border border-slate-200 p-3 rounded-xl flex items-center gap-2 cursor-pointer hover:border-blue-500 transition">
-                                <input type="radio" name="paymentMethod" value="Cash on Delivery" class="text-blue-600">
+                                <input type="radio" name="paymentMethod" value="Cash on Delivery (COD)" onchange="togglePaymentNotice()" class="text-blue-600">
                                 <span class="text-xs font-bold">Cash on Delivery</span>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Bank / Account Instruction Box -->
+                    <!-- Bank / Account & Advance Payment Notice Box -->
                     <div id="paymentInstructions" class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 space-y-1">
                         <p class="font-bold"><i class="fas fa-info-circle mr-1"></i> Payment Account Details:</p>
                         <p><strong>JazzCash / EasyPaisa:</strong> 0300-1234567 (H. Mobile Zone)</p>
                         <p><strong>Bank Account (Meezan / HBL):</strong> 1234-5678901234</p>
-                        <p class="text-[11px] text-slate-600 mt-1">Please send payment to the above account before confirming, or select Cash on Delivery.</p>
+                        <p id="codNoticeText" class="text-[11px] text-amber-800 font-semibold mt-1 hidden">⚠️ Note: For Cash on Delivery, Rs. 500 advance payment is compulsory. Please send Rs. 500 first to the above account before confirming your order!</p>
                     </div>
 
                     <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-500/20 text-sm">
@@ -490,6 +490,18 @@
             });
         }
 
+        // Toggle Payment Notice based on selection (Show/Hide Rs 500 advance warning for COD)
+        function togglePaymentNotice() {
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            const codNoticeText = document.getElementById('codNoticeText');
+            
+            if (selectedMethod.includes('Cash on Delivery')) {
+                codNoticeText.classList.remove('hidden');
+            } else {
+                codNoticeText.classList.add('hidden');
+            }
+        }
+
         // Open Order Modal for specific product
         function openOrderModal(productId) {
             const product = products.find(p => p.id === productId);
@@ -500,6 +512,7 @@
             document.getElementById('checkoutProductPrice').textContent = `PKR ${product.price.toLocaleString()}`;
             
             document.getElementById('orderModal').classList.remove('hidden');
+            togglePaymentNotice();
         }
 
         // Close Order Modal
@@ -519,6 +532,15 @@
             const address = document.getElementById('custAddress').value.trim();
             const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
 
+            // If Cash on Delivery is selected, ask customer if they have paid Rs. 500 advance
+            if (paymentMethod.includes('Cash on Delivery')) {
+                const confirmAdvance = confirm("⚠️ Cash on Delivery ke liye Rs. 500 advance payment dena compulsory hai.\n\nAapne Rs. 500 advance payment kar di hai ya karna chahte hain?");
+                if (!confirmAdvance) {
+                    alert("Order cancel kardiya gaya kyunki Rs. 500 advance payment zaroori hai.");
+                    return;
+                }
+            }
+
             // Format message for WhatsApp
             const message = `🛍️ *New Order Received! - H. Mobile Zone*\n\n` +
                             `📦 *Product:* ${currentCheckoutProduct.title}\n` +
@@ -529,7 +551,7 @@
                             `💳 *Payment Method:* ${paymentMethod}\n\n` +
                             `Please confirm this order!`;
 
-            // Replace with your shop's WhatsApp number (e.g. 923001234567)
+            // Apna WhatsApp number yahan set karein (maslan: 923001234567)
             const whatsappNumber = "923001234567"; 
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -563,6 +585,7 @@
             
             toggleCartModal();
             document.getElementById('orderModal').classList.remove('hidden');
+            togglePaymentNotice();
         }
 
         // Toggle Drawer Modal
@@ -599,7 +622,6 @@
         function filterProducts() {
             const query = (document.getElementById('searchInput').value || document.getElementById('mobileSearchInput').value).toLowerCase();
             
-            // Basic live search highlighting or hiding cards
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
