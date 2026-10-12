@@ -532,15 +532,6 @@
             const address = document.getElementById('custAddress').value.trim();
             const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
 
-            // If Cash on Delivery is selected, ask customer if they have paid Rs. 500 advance
-            if (paymentMethod.includes('Cash on Delivery')) {
-                const confirmAdvance = confirm("⚠️ Cash on Delivery ke liye Rs. 500 advance payment dena compulsory hai.\n\nAapne Rs. 500 advance payment kar di hai ya karna chahte hain?");
-                if (!confirmAdvance) {
-                    alert("Order cancel kardiya gaya kyunki Rs. 500 advance payment zaroori hai.");
-                    return;
-                }
-            }
-
             // Format message for WhatsApp
             const message = `🛍️ *New Order Received! - H. Mobile Zone*\n\n` +
                             `📦 *Product:* ${currentCheckoutProduct.title}\n` +
@@ -551,8 +542,8 @@
                             `💳 *Payment Method:* ${paymentMethod}\n\n` +
                             `Please confirm this order!`;
 
-            // Apna WhatsApp number yahan set karein (maslan: 03349116077)
-            const whatsappNumber = "03349116077"; 
+            // Apna WhatsApp number yahan set karein (maslan: 923001234567)
+            const whatsappNumber = "923001234567"; 
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
             // Close modal & open WhatsApp
