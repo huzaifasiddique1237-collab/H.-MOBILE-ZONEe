@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -400,260 +400,48 @@
     </footer>
 
     <script>
-        // Database of Products with 4 Images (1 main + 3 thumbnails)
+        // Database of Products
         const products = [
             // Fast Chargers
-            { 
-                id: 101, category: 'fast-charger', title: 'Google Pixel Rapid Charger', price: 2000, rating: 4.9, 
-                images: [
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png',
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp'
-                ] 
-            },
-            { 
-                id: 102, category: 'fast-charger', title: 'Tooki 25W C-C Super Fast Adapter', price: 1850, rating: 4.8, 
-                images: [
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png'
-                ] 
-            },
-            { 
-                id: 103, category: 'fast-charger', title: 'Tooki 20W Quick Charge 3.0 Adapter', price: 1450, rating: 4.6, 
-                images: [
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp',
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png'
-                ] 
-            },
-            { 
-                id: 104, category: 'fast-charger', title: 'Samsung 25 Watt Super Fast Adopter', price: 1200, rating: 4.7, 
-                images: [
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png',
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp'
-                ] 
-            },
-            { 
-                id: 105, category: 'fast-charger', title: '67 Watt USB-C GAN mini Charger', price: 3450, rating: 4.9, 
-                images: [
-                    'https://i.ibb.co/Dgvzp71P/mcdodo-ch-097-67w-ultimate-mini-gan-next-gen-super-fast-charging-power-adapter-pakistan-priceoye-mqo.webp',
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png'
-                ] 
-            },
+            { id: 101, category: 'fast-charger', title: 'Google Pixel Rapid Charger', price: 2000, rating: 4.9, icon: '<img src="https://i.ibb.co/S4jgWNcY/images.jpg" alt="images" border="0">' },
+            { id: 102, category: 'fast-charger', title: 'Tooki 25W C-C Super Fast Adapter', price: 1850, rating: 4.8, icon: '<img src="https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp" alt="toocki" border="0">' },
+            { id: 103, category: 'fast-charger', title: 'Tooki 20W Quick Charge 3.0 Adapter', price: 1450, rating: 4.6, icon: '<img src="https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp" alt="toocki" border="0">' },
+            { id: 104, category: 'fast-charger', title: 'Samsung 25 Watt Super Fast Adopter', price: 1200, rating: 4.7, icon: '<img src="https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png" alt="Samsung" border="0">' },
+            { id: 105, category: 'fast-charger', title: '67 Watt USB-C GAN mini Charger', price: 3450, rating: 4.9, icon: '<img src="https://i.ibb.co/Dgvzp71P/mcdodo-ch-097-67w-ultimate-mini-gan-next-gen-super-fast-charging-power-adapter-pakistan-priceoye-mqo.webp" alt="Charger" border="0">' },
 
             // Earbuds
-            { 
-                id: 201, category: 'earbuds', title: 'Lenovo GM3 Earbuds', price: 3499, rating: 4.9, 
-                images: [
-                    'https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg',
-                    'https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg',
-                    'https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg',
-                    'https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg'
-                ] 
-            },
-            { 
-                id: 202, category: 'earbuds', title: 'Leyell ENC Earbuds', price: 2499, rating: 4.7, 
-                images: [
-                    'https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg',
-                    'https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg',
-                    'https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg',
-                    'https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg'
-                ] 
-            },
-            { 
-                id: 203, category: 'earbuds', title: 'U55 Wireless Extra Bass Earbuds', price: 1999, rating: 4.5, 
-                images: [
-                    'https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg',
-                    'https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg',
-                    'https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg',
-                    'https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg'
-                ] 
-            },
-            { 
-                id: 204, category: 'earbuds', title: 'Ronin Eclipse | R-7065 ANC|ENC', price: 6450, rating: 4.6, 
-                images: [
-                    'https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg',
-                    'https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg',
-                    'https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg',
-                    'https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg'
-                ] 
-            },
-            { 
-                id: 205, category: 'earbuds', title: 'Ronin Lucid | R-7135 ENC|ANC', price: 6150, rating: 4.4, 
-                images: [
-                    'https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg',
-                    'https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg',
-                    'https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg',
-                    'https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg'
-                ] 
-            },
+            { id: 201, category: 'earbuds', title: 'Lenovo GM3 Earbuds', price: 3499, rating: 4.9, icon: '<img src="https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg" alt="Lenovo" border="0">' },
+            { id: 202, category: 'earbuds', title: 'Leyell ENC Earbuds', price: 2499, rating: 4.7, icon: '<img src="https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg" alt="Earbuds" border="0">' },
+            { id: 203, category: 'earbuds', title: 'U55 Wireless Extra Bass Earbuds', price: 1999, rating: 4.5, icon: '<img src="https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg" alt="Earbuds" border="0">' },
+            { id: 204, category: 'earbuds', title: 'Ronin Eclipse | R-7065 ANC|ENC', price: 6450, rating: 4.6, icon: '<img src="https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg" alt="Ronin" border="0">' },
+            { id: 205, category: 'earbuds', title: 'Ronin Lucid | R-7135 ENC|ANC', price: 6150, rating: 4.4, icon: '<img src="https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg" alt="Ronin" border="0">' },
 
             // Power Banks
-            { 
-                id: 301, category: 'power-banks', title: 'Forge | R-4020 10000mAh Power Bank', price: 4200, rating: 4.8, 
-                images: [
-                    'https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg',
-                    'https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg',
-                    'https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg',
-                    'https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg'
-                ] 
-            },
-            { 
-                id: 302, category: 'power-banks', title: 'Pulse | R-4065 10000 mAh Power Bank', price: 4599, rating: 4.7, 
-                images: [
-                    'https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg',
-                    'https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg',
-                    'https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg',
-                    'https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg'
-                ] 
-            },
-            { 
-                id: 303, category: 'power-banks', title: 'Ronin Ion | R-4035 20,000mAh Power Bank', price: 6499, rating: 4.6, 
-                images: [
-                    'https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg',
-                    'https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg',
-                    'https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg',
-                    'https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg'
-                ] 
-            },
-            { 
-                id: 304, category: 'power-banks', title: '30,000mAh Heavy Duty Power Pack', price: 5900, rating: 4.9, 
-                images: [
-                    'https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg',
-                    'https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg',
-                    'https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg',
-                    'https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg'
-                ] 
-            },
-            { 
-                id: 305, category: 'power-banks', title: 'Solar Outdoor Charging Bank 10K', price: 3400, rating: 4.5, 
-                images: [
-                    'https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg',
-                    'https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg',
-                    'https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg',
-                    'https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg'
-                ] 
-            },
+            { id: 301, category: 'power-banks', title: 'Forge | R-4020 10000mAh Power Bank', price: 4200, rating: 4.8, icon: '<img src="https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg" alt="d38835e8a62d41b6955673f689d24a0f" border="0">' },
+            { id: 302, category: 'power-banks', title: 'Pulse | R-4065 10000 mAh Power Bank', price: 4599, rating: 4.7, icon: '<img src="https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg" alt="eaacbdcc110e4a8fa9d73580f4049976" border="0">' },
+            { id: 303, category: 'power-banks', title: 'Ronin Ion | R-4035 20,000mAh Power Bank', price: 6499, rating: 4.6, icon: '<img src="https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg" alt="06f196d9f7954d13b848c62258208f23" border="0">' },
+            { id: 304, category: 'power-banks', title: '30,000mAh Heavy Duty Power Pack', price: 5900, rating: 4.9, icon: '🏢' },
+            { id: 305, category: 'power-banks', title: 'Solar Outdoor Charging Bank 10K', price: 3400, rating: 4.5, icon: '☀️' },
 
             // Speakers
-            { 
-                id: 401, category: 'speakers', title: 'Axis Bar | R-3010', price: 5990, rating: 4.8, 
-                images: [
-                    'https://i.ibb.co/WWLZyzSP/d58b42555390432b894a9947ddbf726c.jpg',
-                    'https://i.ibb.co/1fJ4FKC9/6de7276475d2452a9d0f346f8f18df3b.jpg',
-                    'https://i.ibb.co/jPF594M3/855e2209a9bf45198e14232f14f1171e.jpg',
-                    'https://i.ibb.co/0RqsnG68/a8975a29b2e044e990650c39fb3a969d.jpg'
-                ] 
-            },
-            { 
-                id: 402, category: 'speakers', title: 'KOLEER |S29| Portable Bluetooth Speaker', price: 2250, rating: 4.6, 
-                images: [
-                    'https://i.ibb.co/1fJ4FKC9/6de7276475d2452a9d0f346f8f18df3b.jpg',
-                    'https://i.ibb.co/WWLZyzSP/d58b42555390432b894a9947ddbf726c.jpg',
-                    'https://i.ibb.co/jPF594M3/855e2209a9bf45198e14232f14f1171e.jpg',
-                    'https://i.ibb.co/0RqsnG68/a8975a29b2e044e990650c39fb3a969d.jpg'
-                ] 
-            },
-            { 
-                id: 403, category: 'speakers', title: 'K12 Karaoke |Portable Wireless Speaker| |Dual Microphones|', price: 1500, rating: 4.9, 
-                images: [
-                    'https://i.ibb.co/jPF594M3/855e2209a9bf45198e14232f14f1171e.jpg',
-                    'https://i.ibb.co/WWLZyzSP/d58b42555390432b894a9947ddbf726c.jpg',
-                    'https://i.ibb.co/1fJ4FKC9/6de7276475d2452a9d0f346f8f18df3b.jpg',
-                    'https://i.ibb.co/0RqsnG68/a8975a29b2e044e990650c39fb3a969d.jpg'
-                ] 
-            },
-            { 
-                id: 404, category: 'speakers', title: 'X-911 |Portble Bluetooth Speaker| |Extra BASS| ', price: 1500, rating: 4.7, 
-                images: [
-                    'https://i.ibb.co/0RqsnG68/a8975a29b2e044e990650c39fb3a969d.jpg',
-                    'https://i.ibb.co/WWLZyzSP/d58b42555390432b894a9947ddbf726c.jpg',
-                    'https://i.ibb.co/1fJ4FKC9/6de7276475d2452a9d0f346f8f18df3b.jpg',
-                    'https://i.ibb.co/jPF594M3/855e2209a9bf45198e14232f14f1171e.jpg'
-                ] 
-            },
-            { 
-                id: 405, category: 'speakers', title: 'Desktop Soundbar Dual Driver', price: 3800, rating: 4.5, 
-                images: [
-                    'https://i.ibb.co/WWLZyzSP/d58b42555390432b894a9947ddbf726c.jpg',
-                    'https://i.ibb.co/1fJ4FKC9/6de7276475d2452a9d0f346f8f18df3b.jpg',
-                    'https://i.ibb.co/jPF594M3/855e2209a9bf45198e14232f14f1171e.jpg',
-                    'https://i.ibb.co/0RqsnG68/a8975a29b2e044e990650c39fb3a969d.jpg'
-                ] 
-            },
+            { id: 401, category: 'speakers', title: 'Axis Bar | R-3010', price: 5990, rating: 4.8, icon: '<img src="https://i.ibb.co/WWLZyzSP/d58b42555390432b894a9947ddbf726c.jpg" alt="d58b42555390432b894a9947ddbf726c" border="0">' },
+            { id: 402, category: 'speakers', title: 'KOLEER |S29| Portable Bluetooth Speaker', price: 2250, rating: 4.6, icon: '<img src="https://i.ibb.co/1fJ4FKC9/6de7276475d2452a9d0f346f8f18df3b.jpg" alt="6de7276475d2452a9d0f346f8f18df3b" border="0">' },
+            { id: 403, category: 'speakers', title: 'K12 Karaoke |Portable Wireless Speaker| |Dual Microphones|', price: 1500, rating: 4.9, icon: '<img src="https://i.ibb.co/jPF594M3/855e2209a9bf45198e14232f14f1171e.jpg" alt="855e2209a9bf45198e14232f14f1171e" border="0">' },
+            { id: 404, category: 'speakers', title: 'X-911 |Portble Bluetooth Speaker| |Extra BASS| ', price: 1500, rating: 4.7, icon: '<img src="https://i.ibb.co/0RqsnG68/a8975a29b2e044e990650c39fb3a969d.jpg" alt="a8975a29b2e044e990650c39fb3a969d" border="0">' },
+            { id: 405, category: 'speakers', title: 'Desktop Soundbar Dual Driver', price: 3800, rating: 4.5, icon: '📺' },
 
             // Mobile Covers
-            { 
-                id: 501, category: 'mobile-covers', title: 'MagSafe Matte Shield Case', price: 950, rating: 4.9, 
-                images: [
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp'
-                ] 
-            },
-            { 
-                id: 502, category: 'mobile-covers', title: 'Transparent Shockproof Corner Case', price: 650, rating: 4.7, 
-                images: [
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png',
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp'
-                ] 
-            },
-            { 
-                id: 503, category: 'mobile-covers', title: 'Luxury Leather Wallet Flip Cover', price: 1250, rating: 4.8, 
-                images: [
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png',
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp'
-                ] 
-            },
-            { 
-                id: 504, category: 'mobile-covers', title: 'Silicone Soft Touch Velvet Case', price: 800, rating: 4.6, 
-                images: [
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp',
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png'
-                ] 
-            },
-            { 
-                id: 505, category: 'mobile-covers', title: 'Armor Kickstand Rugged Case', price: 1100, rating: 4.7, 
-                images: [
-                    'https://i.ibb.co/S4jgWNcY/images.jpg',
-                    'https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png',
-                    'https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp',
-                    'https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp'
-                ] 
-            }
+            { id: 501, category: 'mobile-covers', title: 'MagSafe Matte Shield Case', price: 950, rating: 4.9, icon: '📱' },
+            { id: 502, category: 'mobile-covers', title: 'Transparent Shockproof Corner Case', price: 650, rating: 4.7, icon: '🛡️' },
+            { id: 503, category: 'mobile-covers', title: 'Luxury Leather Wallet Flip Cover', price: 1250, rating: 4.8, icon: '💼' },
+            { id: 504, category: 'mobile-covers', title: 'Silicone Soft Touch Velvet Case', price: 800, rating: 4.6, icon: '🎨' },
+            { id: 505, category: 'mobile-covers', title: 'Armor Kickstand Rugged Case', price: 1100, rating: 4.7, icon: '🤖' },
         ];
 
         let cart = [];
+        let currentCheckoutProduct = null;
 
-        // Function to change the main image on thumbnail hover or click
-        function changeMainImage(imgId, newSrc) {
-            const mainImgElement = document.getElementById(imgId);
-            if (mainImgElement) {
-                // Add a smooth fade pop effect
-                mainImgElement.style.opacity = '0.3';
-                mainImgElement.src = newSrc;
-                setTimeout(() => {
-                    mainImgElement.style.opacity = '1';
-                }, 150);
-            }
-        }
-
-        // Render products into their respective category sections
+        // Render products into their respective category sections with "Order Now" button
         function renderProducts() {
             const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-covers'];
             
@@ -662,247 +450,182 @@
                 if (!container) return;
 
                 const catProducts = products.filter(p => p.category === cat);
-                container.innerHTML = catProducts.map(product => {
-                    const mainImg = product.images[0];
-                    const thumb1 = product.images[1] || mainImg;
-                    const thumb2 = product.images[2] || mainImg;
-                    const thumb3 = product.images[3] || mainImg;
-                    const mainImgId = `main-img-${product.id}`;
-
-                    return `
+                container.innerHTML = catProducts.map(product => `
                     <div class="product-card bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:border-blue-300 relative group">
                         
                         <!-- Badge -->
-                        <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100 z-10">
+                        <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100">
                             Verified
                         </span>
 
-                        <!-- Main Big Picture Display -->
-                        <div class="w-full h-36 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center mb-2 mt-2 overflow-hidden relative shadow-inner">
-                            <img id="${mainImgId}" src="${mainImg}" alt="${product.title}" class="w-full h-full object-contain p-2 transition-all duration-300 transform group-hover:scale-105">
+                        <!-- Product Visual Placeholder -->
+                        <div class="w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                            ${product.icon}
                         </div>
 
-                        <!-- 3 Thumbnail Pop-up Slots Underneath -->
-                        <div class="flex gap-2 mb-3 justify-center">
-                            <div onmouseenter="changeMainImage('${mainImgId}', '${thumb1}')" onclick="changeMainImage('${mainImgId}', '${thumb1}')" class="w-10 h-10 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden cursor-pointer hover:border-blue-500 hover:scale-110 transition-all shadow-sm">
-                                <img src="${thumb1}" alt="thumb 1" class="w-full h-full object-cover">
-                            </div>
-                            <div onmouseenter="changeMainImage('${mainImgId}', '${thumb2}')" onclick="changeMainImage('${mainImgId}', '${thumb2}')" class="w-10 h-10 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden cursor-pointer hover:border-blue-500 hover:scale-110 transition-all shadow-sm">
-                                <img src="${thumb2}" alt="thumb 2" class="w-full h-full object-cover">
-                            </div>
-                            <div onmouseenter="changeMainImage('${mainImgId}', '${thumb3}')" onclick="changeMainImage('${mainImgId}', '${thumb3}')" class="w-10 h-10 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden cursor-pointer hover:border-blue-500 hover:scale-110 transition-all shadow-sm">
-                                <img src="${thumb3}" alt="thumb 3" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-
-                        <!-- Details & Actions -->
+                        <!-- Product Information -->
                         <div>
                             <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
                                 <i class="fas fa-star"></i>
-                                <span class="text-slate-600 font-semibold text-[11px]">${product.rating}</span>
+                                <span class="font-bold text-slate-700">${product.rating}</span>
+                                <span class="text-slate-400 text-[10px]">(50+)</span>
                             </div>
-                            <h3 class="font-bold text-slate-800 text-sm line-clamp-2 mb-2 h-10 leading-tight">${product.title}</h3>
-                            <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block -mb-1 font-medium">Price</span>
-                                    <span class="text-blue-600 font-black text-sm">PKR ${product.price.toLocaleString()}</span>
-                                </div>
-                                <div class="flex gap-1.5">
-                                    <button onclick="addToCart(${product.id})" class="w-8 h-8 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center transition shadow-sm" title="Add to Cart">
-                                        <i class="fas fa-cart-plus text-xs"></i>
-                                    </button>
-                                    <button onclick="openOrderModal(${product.id})" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3 py-2 rounded-xl transition shadow-md shadow-blue-500/20">
-                                        Order
-                                    </button>
-                                </div>
+                            <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 mb-2 leading-snug" title="${product.title}">
+                                ${product.title}
+                            </h3>
+                        </div>
+
+                        <!-- Price & Order Now Button -->
+                        <div class="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-medium">Price</span>
+                                <span class="text-blue-600 font-extrabold text-xs sm:text-sm">PKR ${product.price.toLocaleString()}</span>
                             </div>
+                            <button onclick="openOrderModal(${product.id})" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-xs font-bold transition shadow-md shadow-blue-500/20 active:scale-95 flex items-center justify-center gap-1.5">
+                                <i class="fas fa-bolt text-[10px]"></i> Order Now
+                            </button>
                         </div>
                     </div>
-                `;
-                }).join('');
+                `).join('');
             });
         }
 
-        // Cart & Checkout logic
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            const existing = cart.find(item => item.id === productId);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...product, qty: 1 });
-            }
-            updateCartUI();
-            showToast("Added to Cart", `${product.title} added successfully!`);
-        }
-
-        function updateCartUI() {
-            const cartCount = document.getElementById('cartCount');
-            const cartItemsContainer = document.getElementById('cartItemsContainer');
-            const cartSubtotal = document.getElementById('cartSubtotal');
-            const emptyCartMessage = document.getElementById('emptyCartMessage');
-
-            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-            cartCount.textContent = totalCount;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div id="emptyCartMessage" class="text-center py-16 text-slate-400">
-                        <i class="fas fa-shopping-basket text-5xl mb-3 text-slate-200"></i>
-                        <p class="font-medium">Your cart is currently empty</p>
-                        <p class="text-xs text-slate-400 mt-1">Browse our store and add accessories!</p>
-                    </div>
-                `;
-                cartSubtotal.textContent = 'PKR 0';
-                return;
-            }
-
-            let subtotal = 0;
-            cartItemsContainer.innerHTML = cart.map(item => {
-                subtotal += item.price * item.qty;
-                return `
-                    <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200">
-                        <div class="flex items-center gap-3">
-                            <img src="${item.images[0]}" class="w-12 h-12 object-contain bg-white rounded-lg p-1 border border-slate-100">
-                            <div>
-                                <h4 class="font-bold text-xs text-slate-800 line-clamp-1">${item.title}</h4>
-                                <p class="text-blue-600 font-bold text-xs">PKR ${item.price.toLocaleString()} x ${item.qty}</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 bg-slate-200 hover:bg-slate-300 rounded text-slate-700 font-bold text-xs flex items-center justify-center">-</button>
-                            <span class="text-xs font-bold">${item.qty}</span>
-                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 bg-blue-600 hover:bg-blue-700 rounded text-white font-bold text-xs flex items-center justify-center">+</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            cartSubtotal.textContent = `PKR ${subtotal.toLocaleString()}`;
-        }
-
-        function changeQty(productId, change) {
-            const item = cart.find(i => i.id === productId);
-            if (!item) return;
-            item.qty += change;
-            if (item.qty <= 0) {
-                cart = cart.filter(i => i.id !== productId);
-            }
-            updateCartUI();
-        }
-
-        function toggleCartModal() {
-            const modal = document.getElementById('cartModal');
-            modal.classList.toggle('hidden');
-        }
-
-        let currentCheckoutProduct = null;
-        function openOrderModal(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            currentCheckoutProduct = product;
-
-            document.getElementById('checkoutProductName').textContent = product.title;
-            document.getElementById('checkoutProductPrice').textContent = `PKR ${product.price.toLocaleString()}`;
-            document.getElementById('orderModal').classList.remove('hidden');
-        }
-
-        function openCheckoutModalDirect() {
-            if (cart.length === 0) {
-                alert("Your cart is empty!");
-                return;
-            }
-            toggleCartModal();
-            let summaryNames = cart.map(i => `${i.title} (${i.qty}x)`).join(', ');
-            let totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-
-            currentCheckoutProduct = {
-                title: summaryNames,
-                price: totalPrice
-            };
-
-            document.getElementById('checkoutProductName').textContent = summaryNames;
-            document.getElementById('checkoutProductPrice').textContent = `Total: PKR ${totalPrice.toLocaleString()}`;
-            document.getElementById('orderModal').classList.remove('hidden');
-        }
-
-        function closeOrderModal() {
-            document.getElementById('orderModal').classList.add('hidden');
-        }
-
+        // Toggle Payment Notice based on selection (Show/Hide Rs 500 advance warning for COD)
         function togglePaymentNotice() {
             const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
             const codNoticeText = document.getElementById('codNoticeText');
-            if (selectedMethod === 'Cash on Delivery (COD)') {
+            
+            if (selectedMethod.includes('Cash on Delivery')) {
                 codNoticeText.classList.remove('hidden');
             } else {
                 codNoticeText.classList.add('hidden');
             }
         }
 
-        function submitOrder(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const address = document.getElementById('custAddress').value;
-            const payment = document.querySelector('input[name="paymentMethod"]:checked').value;
+        // Open Order Modal for specific product
+        function openOrderModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
 
-            let orderText = `*New Order Placed - H. Mobile Zone*%0A%0A`;
-            orderText += `*Product(s):* ${currentCheckoutProduct.title}%0A`;
-            orderText += `*Price:* PKR ${currentCheckoutProduct.price.toLocaleString()}%0A%0A`;
-            orderText += `*Customer Name:* ${name}%0A`;
-            orderText += `*Phone Number:* ${phone}%0A`;
-            orderText += `*Delivery Address:* ${address}%0A`;
-            orderText += `*Payment Method:* ${payment}%0A`;
-
-            const whatsappUrl = `https://wa.me/923001234567?text=${orderText}`;
-            window.open(whatsappUrl, '_blank');
-            closeOrderModal();
-            showToast("Order Successful", "Redirecting to WhatsApp...");
+            currentCheckoutProduct = product;
+            document.getElementById('checkoutProductName').textContent = product.title;
+            document.getElementById('checkoutProductPrice').textContent = `PKR ${product.price.toLocaleString()}`;
+            
+            document.getElementById('orderModal').classList.remove('hidden');
+            togglePaymentNotice();
         }
 
-        function showToast(title, msg) {
+        // Close Order Modal
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+            currentCheckoutProduct = null;
+        }
+
+        // Handle Order Form Submission & WhatsApp Redirect
+        function submitOrder(event) {
+            event.preventDefault();
+
+            if (!currentCheckoutProduct) return;
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            // Format message for WhatsApp
+            const message = `🛍️ *New Order Received! - H. Mobile Zone*\n\n` +
+                            `📦 *Product:* ${currentCheckoutProduct.title}\n` +
+                            `💰 *Price:* PKR ${currentCheckoutProduct.price.toLocaleString()}\n\n` +
+                            `👤 *Customer Name:* ${name}\n` +
+                            `📱 *Mobile Number:* ${phone}\n` +
+                            `📍 *Delivery Address:* ${address}\n` +
+                            `💳 *Payment Method:* ${paymentMethod}\n\n` +
+                            `Please confirm this order!`;
+
+            // Apna WhatsApp number yahan set karein (maslan: 923001234567)
+            const whatsappNumber = "923001234567"; 
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            // Close modal & open WhatsApp
+            closeOrderModal();
+            showToast('Order Placed!', 'Redirecting to WhatsApp to send order details...');
+            
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+            }, 1000);
+        }
+
+        // Proceed from Cart Drawer to Checkout
+        function openCheckoutModalDirect() {
+            if (cart.length === 0) {
+                showToast('Cart Empty', 'Please add items to your cart first.');
+                return;
+            }
+
+            // Calculate total cart details
+            const totalAmount = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            const itemsListText = cart.map(item => `${item.title} (x${item.quantity})`).join(', ');
+
+            currentCheckoutProduct = {
+                title: `Cart Items: ${itemsListText}`,
+                price: totalAmount
+            };
+
+            document.getElementById('checkoutProductName').textContent = currentCheckoutProduct.title;
+            document.getElementById('checkoutProductPrice').textContent = `Total: PKR ${totalAmount.toLocaleString()}`;
+            
+            toggleCartModal();
+            document.getElementById('orderModal').classList.remove('hidden');
+            togglePaymentNotice();
+        }
+
+        // Toggle Drawer Modal
+        function toggleCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Toast Helper
+        function showToast(title, message) {
             const toast = document.getElementById('toast');
             document.getElementById('toastTitle').textContent = title;
-            document.getElementById('toastMessage').textContent = msg;
+            document.getElementById('toastMessage').textContent = message;
+
             toast.classList.remove('translate-y-20', 'opacity-0');
             setTimeout(() => {
                 toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
+            }, 2500);
         }
 
+        // Smooth Scroll Helper
+        function scrollToSection(id) {
+            if (id === 'all') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Filter Products by Search
         function filterProducts() {
             const query = (document.getElementById('searchInput').value || document.getElementById('mobileSearchInput').value).toLowerCase();
-            const sections = document.querySelectorAll('.category-section');
             
-            sections.forEach(section => {
-                const id = section.id;
-                const container = document.getElementById(`grid-${id}`);
-                const catProducts = products.filter(p => p.category === id && p.title.toLowerCase().includes(query));
-                
-                if (catProducts.length === 0) {
-                    section.style.display = 'none';
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'flex';
                 } else {
-                    section.style.display = 'block';
+                    card.style.display = 'none';
                 }
             });
         }
 
-        function scrollToSection(sectionId) {
-            if (sectionId === 'all') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return;
-            }
-            const el = document.getElementById(sectionId);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Initialize Store
-        window.onload = function() {
+        // Initial render on page load
+        window.onload = () => {
             renderProducts();
         };
     </script>
