@@ -89,7 +89,7 @@
 
             <!-- Search Bar -->
             <div class="hidden md:flex flex-1 max-w-md relative">
-                <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search chargers, earbuds, covers..." 
+                <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search chargers, earbuds, ring lights, stands..." 
                        class="w-full bg-slate-50 border border-slate-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
                 <i class="fas fa-search absolute left-4 top-3.5 text-slate-400"></i>
             </div>
@@ -111,7 +111,7 @@
                 <button onclick="scrollToSection('earbuds')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🎧 Earbuds</button>
                 <button onclick="scrollToSection('power-banks')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔋 Power Banks</button>
                 <button onclick="scrollToSection('speakers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">🔊 Speakers</button>
-                <button onclick="scrollToSection('mobile-covers')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">📱 Mobile Covers</button>
+                <button onclick="scrollToSection('mobile-accessories')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-blue-100/70 hover:text-blue-700 transition">💡 Mobile Accessories</button>
             </div>
         </nav>
     </header>
@@ -127,7 +127,7 @@
                     Upgrade Your Tech Experience
                 </h1>
                 <p class="text-blue-100 text-lg max-w-lg font-light">
-                    "Quality never compromised." Discover authentic fast chargers, crystal-clear earbuds, durable power banks, and stylish cases.
+                    "Quality never compromised." Discover authentic fast chargers, crystal-clear earbuds, durable power banks, ring lights, and phone stands.
                 </p>
                 <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
                     <a href="#fast-charger" class="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-bold text-sm shadow-md transition">Explore Catalog</a>
@@ -226,16 +226,16 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-speakers"></div>
         </section>
 
-        <!-- Mobile Covers Section -->
-        <section id="mobile-covers" class="category-section">
+        <!-- Mobile Accessories Section -->
+        <section id="mobile-accessories" class="category-section">
             <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-6">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">📱</div>
-                    <h2 class="text-xl font-bold text-slate-800">Mobile Covers</h2>
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold">💡</div>
+                    <h2 class="text-xl font-bold text-slate-800">Mobile Accessories</h2>
                 </div>
                 <span class="text-xs text-slate-500 font-medium">5 Items</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-mobile-covers"></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-cols-5-custom gap-4 sm:gap-6" id="grid-mobile-accessories"></div>
         </section>
 
     </main>
@@ -447,7 +447,7 @@
                     <li><a href="#earbuds" class="hover:text-white transition">Wireless Earbuds</a></li>
                     <li><a href="#power-banks" class="hover:text-white transition">Power Banks</a></li>
                     <li><a href="#speakers" class="hover:text-white transition">Speakers</a></li>
-                    <li><a href="#mobile-covers" class="hover:text-white transition">Mobile Covers</a></li>
+                    <li><a href="#mobile-accessories" class="hover:text-white transition">Mobile Accessories</a></li>
                 </ul>
             </div>
 
@@ -487,7 +487,7 @@
                 title: 'Google Pixel Rapid Charger', 
                 price: 2000, 
                 rating: 4.9, 
-                icon: '<img src="https://i.ibb.co/S4jgWNcY/images.jpg" alt="Google Charger" class="h-full object-contain">',
+                icon: '<i class="fas fa-bolt text-5xl text-blue-500"></i>',
                 description: 'Original Google Pixel fast charging adapter engineered for rapid power delivery without harming phone battery life.',
                 specs: {
                     'Wattage': '30W PD Fast Charge',
@@ -505,7 +505,7 @@
                 title: 'Tooki 25W C-C Super Fast Adapter', 
                 price: 1850, 
                 rating: 4.8, 
-                icon: '<img src="https://i.ibb.co/zTRwTdh5/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-337j4-500x500.webp" alt="Toocki Charger" class="h-full object-contain">',
+                icon: '<i class="fas fa-plug text-5xl text-blue-500"></i>',
                 description: 'Toocki 25W Super Fast Type-C charger equipped with Intelligent Chip Technology for optimized speed and cool charging.',
                 specs: {
                     'Wattage': '25W Super Fast',
@@ -522,144 +522,130 @@
                 brand: 'Toocki', 
                 title: 'Tooki 20W Quick Charge 3.0 Adapter', 
                 price: 1450, 
-                rating: 4.6, 
-                icon: '<img src="https://i.ibb.co/5WLHQGTQ/toocki-tct1c-jcd01-20w-gan-usb-c-fast-charging-power-adapter-pakistan-priceoye-odbhe-500x500.webp" alt="Toocki 20W" class="h-full object-contain">',
-                description: 'Compact 20W Quick Charge adapter perfect for iPhones and Android smartphones requiring stable fast power output.',
+                rating: 4.7, 
+                icon: '<i class="fas fa-charging-station text-5xl text-blue-500"></i>',
+                description: 'Compact 20W Quick Charger suitable for fast charging iPhones, Android smartphones and peripheral devices.',
                 specs: {
-                    'Wattage': '20W QC 3.0',
-                    'Ports': 'USB-A / Type-C',
-                    'Efficiency': '85%+ Power Conversion',
-                    'Short Circuit Protection': 'Built-in Safe Fuse',
-                    'Compact Design': 'Ultra Lightweight Travel Wall Adapter',
-                    'Compatibility': 'iOS & Android Devices'
+                    'Output Power': '20W Max Output',
+                    'Protocols': 'QC 3.0 / PD 20W',
+                    'Efficiency': '90%+ Conversion Rate',
+                    'Protection': 'Short Circuit Protection',
+                    'Weight': 'Lightweight Travel Charger'
                 }
             },
             { 
                 id: 104, 
                 category: 'fast-charger', 
-                brand: 'Samsung', 
-                title: 'Samsung 25 Watt Super Fast Adopter', 
-                price: 1200, 
-                rating: 4.7, 
-                icon: '<img src="https://i.ibb.co/KxVkyPrG/S809124c654464fd3bc8f946e268adb98g.png" alt="Samsung Adapter" class="h-full object-contain">',
-                description: 'Authentic 25W Super Fast Charging adapter tuned specifically for Galaxy A, S, and Note series devices.',
+                brand: 'Baseus', 
+                title: 'Baseus 65W GaN Fast Wall Charger', 
+                price: 3800, 
+                rating: 4.9, 
+                icon: '<i class="fas fa-car-battery text-5xl text-blue-500"></i>',
+                description: 'Multi-port high output charger capable of fast charging laptops, MacBooks, tablets, and phones simultaneously.',
                 specs: {
-                    'Wattage': '25W Super Fast Charge',
-                    'Protocol': 'PD 3.0 PPS',
-                    'Cable Type': 'Type-C to Type-C Compatible',
-                    'Color': 'Black / White',
-                    'Smart Power': 'Adaptive Fast Charging',
-                    'Build': 'High Durability ABS'
+                    'Total Power': '65W Max GaN5',
+                    'Ports': '2x Type-C, 1x USB-A',
+                    'Laptop Support': 'MacBook Pro / Air Supported',
+                    'Thermal Control': 'BCT Smart Cooling Tech'
                 }
             },
             { 
                 id: 105, 
                 category: 'fast-charger', 
-                brand: 'Mcdodo', 
-                title: '67 Watt USB-C GAN mini Charger', 
-                price: 3450, 
+                brand: 'Anker', 
+                title: 'Anker PowerPort 20W Nano Charger', 
+                price: 2400, 
                 rating: 4.9, 
-                icon: '<img src="https://i.ibb.co/Dgvzp71P/mcdodo-ch-097-67w-ultimate-mini-gan-next-gen-super-fast-charging-power-adapter-pakistan-priceoye-mqo.webp" alt="Mcdodo 67W" class="h-full object-contain">',
-                description: 'Heavy duty GaN Tech 67W ultra compact charger powerful enough to fast charge laptops, MacBooks, and flagships simultaneously.',
+                icon: '<i class="fas fa-microchip text-5xl text-blue-500"></i>',
+                description: 'Ultra-compact nano fast charger built specially for iPhone fast charging from 0 to 50% in 30 minutes.',
                 specs: {
-                    'Wattage': '67W Max GaN Output',
-                    'Ports': 'Dual Type-C + USB-A',
-                    'Laptop Charging': 'MacBook & Type-C Laptop Supported',
-                    'GaN Tech': 'Next-Gen Gallium Nitride',
-                    'Multi-Device': 'Charges 3 Devices at Once',
-                    'Heat Control': '3D Heat Dissipation Tech'
+                    'Wattage': '20W PowerIQ 3.0',
+                    'Size': '50% Smaller than standard',
+                    'Safety': 'MultiProtect Safety System',
+                    'Port': '1x USB-C Port'
                 }
             },
 
-            // Earbuds
+            // Wireless Earbuds
             { 
                 id: 201, 
                 category: 'earbuds', 
                 brand: 'Lenovo', 
-                title: 'Lenovo GM3 Gaming Earbuds', 
-                price: 3499, 
-                rating: 4.9, 
-                icon: '<img src="https://i.ibb.co/7NvH46Wg/34494723-000b-406c-9dfd-d984f3bdd48c.jpg" alt="Lenovo GM3" class="h-full object-contain">',
-                description: 'Ultra-low latency gaming earbuds featuring customized LED digital battery display and powerful virtual surround sound.',
+                title: 'Lenovo LP40 Pro TWS Wireless Earbuds', 
+                price: 2150, 
+                rating: 4.8, 
+                icon: '<i class="fas fa-headphones text-5xl text-blue-500"></i>',
+                description: 'HD Sound quality earbuds with low latency gaming mode, extended battery life, and ergonomic fit.',
                 specs: {
-                    'Noise Cancellation': 'ENC (Environmental Noise Cancellation)',
-                    'Bluetooth Version': 'v5.2 Gaming Chip',
-                    'Battery Playtime': 'Up to 24 Hours with Case',
-                    'Low Latency': '40ms Ultra Low Gaming Mode',
-                    'Display': 'Digital LED Battery Percentage Indicator',
-                    'Driver Unit': '12mm Dynamic Bass Drivers'
+                    'Bluetooth Version': 'v5.1 Dual Chip',
+                    'Playtime': 'Up to 20 Hours with Case',
+                    'Driver Unit': '13mm Large Dynamic Driver',
+                    'Noise Cancellation': 'ENC Call Noise Reduction',
+                    'Water Resistance': 'IPX5 Sweatproof'
                 }
             },
             { 
                 id: 202, 
                 category: 'earbuds', 
-                brand: 'Leyell', 
-                title: 'Leyell Clear Voice ENC Earbuds', 
-                price: 2499, 
-                rating: 4.7, 
-                icon: '<img src="https://i.ibb.co/JWF4zRrM/c65ac846-6c8f-46f6-b6de-3bfeef95e735.jpg" alt="Leyell Earbuds" class="h-full object-contain">',
-                description: 'Crystal clear voice call earbuds built with Quad-Microphone ENC technology for noise-free outdoor calls.',
+                brand: 'Ronin', 
+                title: 'Ronin R-520 Wireless Gaming Earbuds', 
+                price: 3200, 
+                rating: 4.9, 
+                icon: '<i class="fas fa-headset text-5xl text-blue-500"></i>',
+                description: 'Designed for gamers with ultra-low latency, crisp bass response, and customizable RGB LED lighting.',
                 specs: {
-                    'Noise Cancellation': 'Quad Mic Dual-ENC',
-                    'Bluetooth Version': 'v5.3 Fast Auto Pairing',
-                    'Battery Life': '6 Hours Single Charge (30H Total)',
-                    'Water Resistance': 'IPX5 Sweat & Splash Proof',
-                    'Touch Controls': 'Smart Touch (Play/Pause/Calls)',
-                    'Charging Case': 'Type-C Quick Recharging'
+                    'Latency': '45ms Gaming Mode',
+                    'Microphone': 'Quad Mic for Crystal Calls',
+                    'Battery Life': '6 Hours Single Charge',
+                    'Charging Case': '400mAh Case with RGB'
                 }
             },
             { 
                 id: 203, 
                 category: 'earbuds', 
-                brand: 'U55 Audio', 
-                title: 'U55 Wireless Extra Bass Earbuds', 
-                price: 1999, 
-                rating: 4.5, 
-                icon: '<img src="https://i.ibb.co/0p69dksz/f9c0c972-fbae-4ac8-88fa-0c9009c6f862.jpg" alt="U55 Earbuds" class="h-full object-contain">',
-                description: 'Deep punchy bass earbuds designed for music lovers with ergonomic comfortable in-ear silicone fit.',
+                brand: 'Audionic', 
+                title: 'Audionic Airbud 55 Wireless Earbuds', 
+                price: 2950, 
+                rating: 4.7, 
+                icon: '<i class="fas fa-music text-5xl text-blue-500"></i>',
+                description: 'Deep bass sound profile paired with touch control functionality and instant auto-pairing.',
                 specs: {
-                    'Sound Mode': 'Extra Bass Boost Tuning',
-                    'Bluetooth Version': 'v5.1 Stable Connection',
-                    'Battery Life': '4.5 Hours Playback Time',
-                    'Mic Quality': 'HD Voice Microphone',
-                    'Fit Type': 'Ergonomic In-Ear Isolation',
-                    'Case Battery': '300mAh Charging Pod'
+                    'Bluetooth': 'v5.3 Fast Sync',
+                    'Standby Time': '120 Hours',
+                    'Controls': 'Smart Touch Sensors',
+                    'Charging': 'Type-C Fast Charge Support'
                 }
             },
             { 
                 id: 204, 
                 category: 'earbuds', 
-                brand: 'Ronin', 
-                title: 'Ronin Eclipse | R-7065 ANC|ENC', 
-                price: 6450, 
-                rating: 4.6, 
-                icon: '<img src="https://i.ibb.co/5hd04zG8/81dbaf9b-dec5-4cf7-9362-05f19bdc8017.jpg" alt="Ronin R7065" class="h-full object-contain">',
-                description: 'Flagship Ronin earbuds loaded with Hybrid Active Noise Cancellation (ANC) and Quad ENC Mics.',
+                brand: 'Haylou', 
+                title: 'Haylou GT7 Neo TWS Earbuds', 
+                price: 3600, 
+                rating: 4.8, 
+                icon: '<i class="fas fa-broadcast-tower text-5xl text-blue-500"></i>',
+                description: 'Advanced AI call noise cancellation ensures clear conversations even in noisy outdoor environments.',
                 specs: {
-                    'Noise Cancellation': 'Active ANC (-30dB) + ENC',
-                    'Bluetooth Version': 'v5.3 High Definition',
-                    'Playtime': 'Up to 35 Hours Total Playtime',
-                    'Transparency Mode': 'Ambient Sound Awareness Mode',
-                    'Touch Control': 'Full Touch Sensitivity',
-                    'Warranty': '1 Year Official Ronin Warranty'
+                    'Codec': 'AAC / SBC Audio Codec',
+                    'Weight': '3.9g Ultra Light Body',
+                    'Battery': '22 Hours Total Battery',
+                    'App Support': 'Custom EQ Settings'
                 }
             },
             { 
                 id: 205, 
                 category: 'earbuds', 
-                brand: 'Ronin', 
-                title: 'Ronin Lucid | R-7135 ENC|ANC', 
-                price: 6150, 
-                rating: 4.4, 
-                icon: '<img src="https://i.ibb.co/jPdr8Chh/e64648f8-60f1-4cb8-b667-0797bc2a2457.jpg" alt="Ronin R7135" class="h-full object-contain">',
-                description: 'Premium transparent design case combined with powerful active noise cancellation and crystal audio clarity.',
+                brand: 'QCY', 
+                title: 'QCY T13 ANC Wireless Earbuds', 
+                price: 4100, 
+                rating: 4.9, 
+                icon: '<i class="fas fa-volume-up text-5xl text-blue-500"></i>',
+                description: 'Active Noise Cancellation earbuds designed to isolate surrounding disturbance while listening to music.',
                 specs: {
-                    'Noise Cancellation': 'Dual ANC & Environmental ENC',
-                    'Design': 'Lucid Transparent Futuristic Shell',
-                    'Driver Size': '13mm Titanium Drivers',
-                    'Battery Time': '6 Hours Earbuds / 28 Hours Case',
-                    'Low Latency': 'Gaming Mode Activated',
-                    'Warranty': '1 Year Brand Warranty'
+                    'Noise Reduction': '28dB Active ANC',
+                    'Driver': '10mm Bio-Diaphragm',
+                    'Quick Charge': '10 Mins Charge = 1 Hour Play',
+                    'Microphone': '4 Mic Noise Reduction'
                 }
             },
 
@@ -667,328 +653,287 @@
             { 
                 id: 301, 
                 category: 'power-banks', 
-                brand: 'Ronin', 
-                title: 'Forge | R-4020 10000mAh Power Bank', 
-                price: 4200, 
-                rating: 4.8, 
-                icon: '<img src="https://i.ibb.co/FkHJCnKC/d38835e8a62d41b6955673f689d24a0f.jpg" alt="Ronin 10K" class="h-full object-contain">',
-                description: 'Sleek, pocket-sized 10,000mAh power bank with dual USB fast outputs and safe lithium-polymer battery cells.',
+                brand: 'Romoss', 
+                title: 'Romoss Sense 8+ 30000mAh Power Bank', 
+                price: 5400, 
+                rating: 4.9, 
+                icon: '<i class="fas fa-battery-full text-5xl text-blue-500"></i>',
+                description: 'Massive capacity power bank capable of charging an average smartphone up to 7 to 8 times.',
                 specs: {
-                    'Capacity': '10,000 mAh High Density',
-                    'Output Ports': '2x USB Quick Charge + 1x Type-C',
-                    'Input Ports': 'Type-C PD & Micro-USB',
-                    'Protection': 'Over-Voltage & Over-Current Safety',
-                    'Indicator': 'LED Battery Level Indicator',
-                    'Weight': 'Slim Light Aluminum Finish Body'
+                    'Capacity': '30,000mAh Lithium Polymer',
+                    'Fast Charge': '18W Two-Way Fast Charge',
+                    'Inputs': 'Type-C, Micro-USB, Lightning',
+                    'Outputs': 'Dual USB-A + Type-C PD'
                 }
             },
             { 
                 id: 302, 
                 category: 'power-banks', 
-                brand: 'Ronin', 
-                title: 'Pulse | R-4065 10000 mAh Power Bank', 
-                price: 4599, 
-                rating: 4.7, 
-                icon: '<img src="https://i.ibb.co/Z6yDsZ1P/eaacbdcc110e4a8fa9d73580f4049976.jpg" alt="Ronin Pulse" class="h-full object-contain">',
-                description: '22.5W Super Fast Charging power bank featuring bidirectional Type-C Power Delivery (PD) fast charging.',
+                brand: 'Joyroom', 
+                title: 'Joyroom 10000mAh 22.5W Power Bank', 
+                price: 3100, 
+                rating: 4.8, 
+                icon: '<i class="fas fa-battery-three-quarters text-5xl text-blue-500"></i>',
+                description: 'Slim and portable power bank with built-in LED display indicating remaining battery level.',
                 specs: {
-                    'Capacity': '10,000 mAh Real Capacity',
-                    'Max Output': '22.5W Super Fast Output',
-                    'Fast Charge Protocol': 'PD 3.0 + Quick Charge 3.0',
-                    'Digital Display': 'Percentage Battery Display Screen',
-                    'Simultaneous Charging': 'Charge 2 Phones at Once',
-                    'Build': 'Textured Anti-Slip Grip'
+                    'Capacity': '10,000mAh',
+                    'Power': '22.5W Super Fast Charging',
+                    'Display': 'Digital Percentage Display',
+                    'Design': 'Compact Pocket Friendly'
                 }
             },
             { 
                 id: 303, 
                 category: 'power-banks', 
-                brand: 'Ronin', 
-                title: 'Ronin Ion | R-4035 20,000mAh Power Bank', 
-                price: 6499, 
-                rating: 4.6, 
-                icon: '<img src="https://i.ibb.co/sn4MC6x/06f196d9f7954d13b848c62258208f23.jpg" alt="Ronin 20K" class="h-full object-contain">',
-                description: 'Massive 20,000mAh monster battery bank equipped with fast charging for long trips and heavy smartphone users.',
+                brand: 'Baseus', 
+                title: 'Baseus Bipow 20000mAh Digital Display', 
+                price: 4600, 
+                rating: 4.8, 
+                icon: '<i class="fas fa-charging-station text-5xl text-blue-500"></i>',
+                description: 'High efficiency multi-device battery bank with intelligent power allocation and safety sensors.',
                 specs: {
-                    'Capacity': '20,000 mAh Massive Power',
-                    'Phone Charges': 'Charges average phone 4-5 times',
-                    'Outputs': 'Triple Output Ports',
-                    'Input': 'Type-C Fast Recharging',
-                    'Safety Standard': 'Short-Circuit Thermal Protection',
-                    'Warranty': '1 Year Brand Warranty'
+                    'Capacity': '20,000mAh',
+                    'Charging Standard': 'PD 3.0 / QC 3.0 / FCP',
+                    'Safety': 'NTC Temperature Monitor',
+                    'Ports': '3 Device Simultaneous Output'
                 }
             },
             { 
                 id: 304, 
                 category: 'power-banks', 
-                brand: 'H. Mobile', 
-                title: '30,000mAh Heavy Duty Power Pack', 
-                price: 5900, 
+                brand: 'Anker', 
+                title: 'Anker 325 PowerCore 20000mAh', 
+                price: 6800, 
                 rating: 4.9, 
-                icon: '🏢',
-                description: 'Extreme heavy duty power station designed for long travel, emergencies, and multiple device charging.',
+                icon: '<i class="fas fa-plug text-5xl text-blue-500"></i>',
+                description: 'Ultra-durable high capacity portable battery with Anker PowerIQ voltage boost technology.',
                 specs: {
-                    'Capacity': '30,000 mAh Heavy Duty',
-                    'Torch Light': 'Built-in High Intensity LED Emergency Light',
-                    'Outputs': '4x USB Output Ports',
-                    'Fast Recharging': 'Dual Input Support',
-                    'Durable Shell': 'Rugged Shockproof Casing',
-                    'Ideal For': 'Trekking, Travel & Load-shedding'
+                    'Capacity': '20,000mAh',
+                    'Trickle Charge': 'Safe for Earbuds & Smartwatches',
+                    'Build': 'Scratch-Resistant Matte Shell'
                 }
             },
             { 
                 id: 305, 
                 category: 'power-banks', 
-                brand: 'SolarTech', 
-                title: 'Solar Outdoor Charging Bank 10K', 
-                price: 3400, 
-                rating: 4.5, 
-                icon: '☀️',
-                description: 'Outdoor solar power bank with built-in solar panels for continuous emergency sunlight charging.',
+                brand: 'Mi', 
+                title: 'Xiaomi 10000mAh 33W Pocket Edition Pro', 
+                price: 3900, 
+                rating: 4.7, 
+                icon: '<i class="fas fa-battery-half text-5xl text-blue-500"></i>',
+                description: 'Pocket sized lightweight power bank offering fast charging output up to 33W for smartphones.',
                 specs: {
-                    'Capacity': '10,000 mAh',
-                    'Solar Panel': 'High Efficiency Monocrystalline Solar Panel',
-                    'Water Resistance': 'Waterproof & Dustproof Enclosure',
-                    'Features': 'Compass Belt + Dual LED Torch',
-                    'Outputs': 'Dual USB 2.1A Fast Charge',
-                    'Recharge Method': 'Sunlight Solar + USB Cable'
+                    'Capacity': '10,000mAh',
+                    'Output Power': '33W Max Speed',
+                    'Port': 'Type-C Two-Way Fast Charge'
                 }
             },
 
-            // Speakers
+            // Bluetooth Speakers
             { 
                 id: 401, 
                 category: 'speakers', 
-                brand: 'Ronin', 
-                title: 'Axis Bar | R-3010 Wireless Soundbar', 
-                price: 5990, 
-                rating: 4.8, 
-                icon: '<img src="https://i.ibb.co/WWLZyzSP/d58b42555390432b894a9947ddbf726c.jpg" alt="Ronin Axis Bar" class="h-full object-contain">',
-                description: 'Stereo Soundbar speaker offering rich room-filling bass, multi-mode RGB illumination, and long battery backup.',
+                brand: 'JBL', 
+                title: 'JBL GO 3 Portable Waterproof Speaker', 
+                price: 4900, 
+                rating: 4.9, 
+                icon: '<i class="fas fa-volume-up text-5xl text-blue-500"></i>',
+                description: 'Bold style and rich JBL Pro Sound in a dustproof and waterproof compact fabric design.',
                 specs: {
-                    'Sound Output': '16W Dynamic Dual Speakers',
-                    'Bluetooth Version': 'v5.2 Seamless Connection',
-                    'Playtime': '6-8 Hours Non-stop Music',
-                    'Connectivity': 'Bluetooth / AUX / TF Card / USB Drive',
-                    'Lighting': 'RGB Ambient Breathing Lights',
-                    'Warranty': '1 Year Brand Warranty'
+                    'Waterproof Rating': 'IP67 Dust & Waterproof',
+                    'Playtime': '5 Hours Continuous Play',
+                    'Bluetooth': 'v5.1 Connection',
+                    'Output': '4.2W RMS Punchy Bass'
                 }
             },
             { 
                 id: 402, 
                 category: 'speakers', 
-                brand: 'Koleer', 
-                title: 'KOLEER |S29| Portable Bluetooth Speaker', 
-                price: 2250, 
-                rating: 4.6, 
-                icon: '<img src="https://i.ibb.co/1fJ4FKC9/6de7276475d2452a9d0f346f8f18df3b.jpg" alt="Koleer S29" class="h-full object-contain">',
-                description: 'Rugged outdoor portable speaker with deep bass subwoofer radiator and crystal clear treble sound.',
+                brand: 'Tronsmart', 
+                title: 'Tronsmart Trip 10W Portable Speaker', 
+                price: 3700, 
+                rating: 4.8, 
+                icon: '<i class="fas fa-bullhorn text-5xl text-blue-500"></i>',
+                description: 'Dual driver outdoor Bluetooth speaker delivering crystal clear treble and deep passive bass resonance.',
                 specs: {
-                    'Sound Quality': 'Heavy Bass Passive Subwoofer',
-                    'Battery Capacity': '1200mAh (4-5 Hours Playtime)',
-                    'Bluetooth Range': '10 Meters Unobstructed',
-                    'FM Radio': 'Built-in High Sensitivity FM Tuner',
-                    'Body': 'Rubberized Anti-shock Finish',
-                    'Hands-Free': 'Built-in Mic for Calls'
+                    'Output': '10W SoundPulse Audio',
+                    'Battery Life': 'Up to 20 Hours (at 50% vol)',
+                    'Mic': 'Built-in Mic for Hands-Free Calls'
                 }
             },
             { 
                 id: 403, 
                 category: 'speakers', 
-                brand: 'K12 Karaoke', 
-                title: 'K12 Portable Speaker with Dual Mics', 
-                price: 1500, 
-                rating: 4.9, 
-                icon: '<img src="https://i.ibb.co/jPF594M3/855e2209a9bf45198e14232f14f1171e.jpg" alt="K12 Karaoke" class="h-full object-contain">',
-                description: 'Fun mini karaoke machine equipped with 2 wireless microphones and magic voice sound effects for parties.',
+                brand: 'Audionic', 
+                title: 'Audionic Sugar 7 Portable RGB Speaker', 
+                price: 2600, 
+                rating: 4.6, 
+                icon: '<i class="fas fa-radio text-5xl text-blue-500"></i>',
+                description: 'Fun party speaker featuring vibrant RGB rainbow lighting effects and multi-input audio support.',
                 specs: {
-                    'Microphones': '2 Wireless Rechargeable Mics Included',
-                    'Voice Effects': '5 Magic Voice Changing Modes',
-                    'Lighting': '360 RGB Party Light Patterns',
-                    'Battery': 'Rechargeable Lithium Battery (4 Hours)',
-                    'Speaker Power': '10W Crisp Audio Driver',
-                    'Portability': 'Leather Hand Strap Included'
+                    'Inputs': 'Bluetooth, TF Card, USB, FM Radio',
+                    'Lights': 'Multi-Color RGB Sync',
+                    'Size': 'Handy Strap Carry Design'
                 }
             },
             { 
                 id: 404, 
                 category: 'speakers', 
-                brand: 'X-Bass', 
-                title: 'X-911 Portable Bluetooth Speaker |Extra BASS|', 
-                price: 1500, 
-                rating: 4.7, 
-                icon: '<img src="https://i.ibb.co/0RqsnG68/a8975a29b2e044e990650c39fb3a969d.jpg" alt="X-911 Speaker" class="h-full object-contain">',
-                description: 'Compact hand-held speaker delivering surprisingly loud audio volume and punchy bass resonance.',
+                brand: 'Anker', 
+                title: 'Anker Soundcore Select 2 Speaker', 
+                price: 7500, 
+                rating: 4.9, 
+                icon: '<i class="fas fa-sliders-h text-5xl text-blue-500"></i>',
+                description: '16W stereo sound with BassUp technology and customizable equalizer control via Smartphone App.',
                 specs: {
-                    'Bass Enhancement': 'Dual Passive Bass Radiator',
-                    'Bluetooth Version': 'v5.0 Fast Link',
-                    'Playtime': '3-5 Hours Active Playback',
-                    'Inputs': 'MicroSD Slot, USB, AUX, Bluetooth',
-                    'Control Buttons': 'Volume / Track / Mode Controls',
-                    'Weight': 'Lightweight Pocket Portable'
+                    'Output Power': '16W Dual Drivers',
+                    'Playtime': '20 Hours Battery',
+                    'Waterproof': 'IPX7 Waterproof',
+                    'App': 'Soundcore Custom EQ'
                 }
             },
             { 
                 id: 405, 
                 category: 'speakers', 
-                brand: 'AudioPro', 
-                title: 'Desktop Soundbar Dual Driver', 
-                price: 3800, 
-                rating: 4.5, 
-                icon: '📺',
-                description: 'Elegantly designed horizontal PC and TV soundbar featuring high clarity dual full-range audio drivers.',
+                brand: 'Lenovo', 
+                title: 'Lenovo K3 Pro Portable Mini Speaker', 
+                price: 1950, 
+                rating: 4.7, 
+                icon: '<i class="fas fa-compact-disc text-5xl text-blue-500"></i>',
+                description: 'Miniature desk speaker delivering loud 3D surround sound for music streaming and movies.',
                 specs: {
-                    'Output Power': '20W Peak Audio Power',
-                    'Ideal For': 'PC Monitors, Laptops, LED TVs',
-                    'Connection': '3.5mm Audio Jack + USB Power / Bluetooth',
-                    'Volume Control': 'Rotary Knob with Blue Backlight',
-                    'Frequency Range': '60Hz - 20kHz',
-                    'Structure': 'Wooden Acoustic Cabinet Design'
+                    'Connectivity': 'Bluetooth 5.0 HD',
+                    'Battery': '1200mAh High Capacity',
+                    'Design': 'Full Metal Mesh Grill'
                 }
             },
 
-            // Mobile Covers
+            // Mobile Accessories (Replaced Mobile Covers)
             { 
                 id: 501, 
-                category: 'mobile-covers', 
-                brand: 'MagSafe Shield', 
-                title: 'MagSafe Matte Shield Case', 
-                price: 950, 
+                category: 'mobile-accessories', 
+                brand: 'Yunteng', 
+                title: '10" LED Ring Light with 7ft Tripod Stand', 
+                price: 2450, 
                 rating: 4.9, 
-                icon: '📱',
-                description: 'Premium translucent matte back cover with integrated strong magnetic ring for MagSafe accessories and wireless charging.',
+                icon: '<i class="fas fa-lightbulb text-5xl text-blue-500"></i>',
+                description: 'Professional 10-inch studio ring light with adjustable 7-foot metal tripod stand, smartphone holder, and 3 light modes for TikTok, live streaming, and video recording.',
                 specs: {
-                    'Material': 'Frosted Matte Polycarbonate + Flexible TPU',
-                    'MagSafe Support': 'Built-in N52 Strong Magnets',
-                    'Camera Protection': 'Raised Metal Rim Camera Lens Protection',
-                    'Fingerprint Resistance': 'Oleophobic Anti-Fingerprint Coating',
-                    'Corner Bumper': 'Airbag Shock Absorbing Corners',
-                    'Compatibility': 'All iPhone & Select Android Models'
+                    'Light Modes': '3 Color Modes (Warm, Natural, Cool White)',
+                    'Brightness': '10 Dimmable Levels',
+                    'Stand Height': 'Adjustable 2.1m (7 Feet)',
+                    'Power Input': 'USB Powered (5V/2A)',
+                    'Rotation': '360-Degree Ball Head Mounting'
                 }
             },
             { 
                 id: 502, 
-                category: 'mobile-covers', 
-                brand: 'ClearGuard', 
-                title: 'Transparent Shockproof Corner Case', 
-                price: 650, 
-                rating: 4.7, 
-                icon: '🛡️',
-                description: 'Crystal clear anti-yellowing transparent case featuring reinforced shockproof corner cushion cushions.',
+                category: 'mobile-accessories', 
+                brand: 'Baseus', 
+                title: 'Foldable Metal Desktop Phone & Tablet Stand', 
+                price: 1250, 
+                rating: 4.8, 
+                icon: '<i class="fas fa-mobile-alt text-5xl text-blue-500"></i>',
+                description: 'Heavy-duty aluminum alloy desktop holder with dual-axis angle adjustment and anti-slip silicone padding.',
                 specs: {
-                    'Clarity': '99% High Transparency Anti-Yellowing German TPU',
-                    'Protection': 'Military Grade 6ft Drop Tested',
-                    'Buttons': 'Tactile Easy-Press Chrome Buttons',
-                    'Screen Guard': '1.2mm Raised Screen Edges',
-                    'Grip': 'Non-slip Textured Side Grips',
-                    'Flexibility': 'Soft Scratch-Resistant TPU'
+                    'Material': 'Premium Aluminum Alloy + Silicone',
+                    'Adjustment': '0 to 270 Degree Multi-Angle',
+                    'Compatibility': '4.0 to 12.9 inch Phones & iPads',
+                    'Portability': 'Fully Foldable Pocket Design',
+                    'Base': 'Weighted Non-Slip Base'
                 }
             },
             { 
                 id: 503, 
-                category: 'mobile-covers', 
-                brand: 'Executive', 
-                title: 'Luxury Leather Wallet Flip Cover', 
-                price: 1250, 
-                rating: 4.8, 
-                icon: '💼',
-                description: 'Handcrafted PU leather flip wallet case with card slots, cash pouch, and magnetic closure latch.',
+                category: 'mobile-accessories', 
+                brand: 'Gorillapod', 
+                title: 'Flexible Octopus Tripod with Bluetooth Shutter', 
+                price: 1450, 
+                rating: 4.7, 
+                icon: '<i class="fas fa-camera text-5xl text-blue-500"></i>',
+                description: 'Flexible bendable leg tripod capable of wrapping around trees, railings, and handles. Includes wireless Bluetooth camera shutter remote.',
                 specs: {
-                    'Material': 'Premium Synthetic Leather + Inner TPU Cradle',
-                    'Card Slots': '3 Card Slots + 1 Cash Pocket',
-                    'Stand Feature': 'Kickstand Mode for Watching Videos',
-                    'Closure': 'Secure Double Magnetic Flap',
-                    'Protection': '360 Degree Full Body Coverage',
-                    'Look': 'Classic Business Executive Styling'
+                    'Legs': 'High Elasticity Rubber Bendable Legs',
+                    'Remote': 'Bluetooth Remote Shutter Included',
+                    'Mount': 'Universal 1/4" Screw + Phone Clip',
+                    'Max Load': '1.2 kg Capacity'
                 }
             },
             { 
                 id: 504, 
-                category: 'mobile-covers', 
-                brand: 'SilkyTouch', 
-                title: 'Silicone Soft Touch Velvet Case', 
-                price: 800, 
-                rating: 4.6, 
-                icon: '🎨',
-                description: 'Liquid silicone case with inner soft microfiber lining to keep your device body scratch-free.',
+                category: 'mobile-accessories', 
+                brand: 'Joyroom', 
+                title: 'Magnetic Dashboard Car Mount Phone Holder', 
+                price: 1650, 
+                rating: 4.9, 
+                icon: '<i class="fas fa-compass text-5xl text-blue-500"></i>',
+                description: 'Ultra-strong N52 neodymium magnetic car mount designed to hold phones securely even on rough terrain roads.',
                 specs: {
-                    'Exterior': 'Liquid Silicone Soft Smooth Finish',
-                    'Interior': 'Soft Microfiber Velvet Cloth Lining',
-                    'Wipeable': 'Easy to Clean Dust & Ink Marks',
-                    'Full Coverage': 'Bottom Closed Protection Design',
-                    'Colors': 'Available in Multiple Pastel Colors',
-                    'Feel': 'Ultra Comfortable Soft Grip'
+                    'Magnets': '6x N52 Strong Neodymium Magnets',
+                    'Mounting': '3M VHB Heavy Duty Sticky Base',
+                    'Rotation': '360 Degree Swivel Joint',
+                    'Compatibility': 'Universal for All Smartphones'
                 }
             },
             { 
                 id: 505, 
-                category: 'mobile-covers', 
-                brand: 'ArmorShield', 
-                title: 'Armor Kickstand Rugged Heavy Duty Case', 
-                price: 1100, 
-                rating: 4.7, 
-                icon: '🤖',
-                description: 'Heavy duty dual-layer rugged protective case with built-in metal ring kickstand and magnetic car mount plate.',
+                category: 'mobile-accessories', 
+                brand: 'MEMO', 
+                title: 'MEMO FL05 Phone Cooling Fan & Gaming Triggers', 
+                price: 2200, 
+                rating: 4.8, 
+                icon: '<i class="fas fa-gamepad text-5xl text-blue-500"></i>',
+                description: 'RGB Semiconductor smartphone radiator cooler combined with ultra-responsive PUBG/COD physical trigger buttons.',
                 specs: {
-                    'Build': 'Dual Layer Hard PC Outer + Soft TPU Core',
-                    'Kickstand': '360 Rotating Metal Ring Kickstand',
-                    'Car Mount': 'Integrated Metal Plate for Magnetic Car Holder',
-                    'Protection': 'Extreme Outdoor Impact Protection',
-                    'Port Covers': 'Dust Plugs for Charging Ports',
-                    'Design': 'Tactical Robot Armor Styling'
+                    'Cooling Speed': '6000 RPM Silent Fan Engine',
+                    'Lighting': 'RGB Auto-Color Breathing Light',
+                    'Power': 'Type-C Direct Plug-in Power',
+                    'Triggers': 'Capacitive Metal Click Triggers'
                 }
             }
         ];
 
+        // Global Cart State
         let cart = [];
-        let currentCheckoutProduct = null;
-        let activeModalProduct = null;
+        let selectedProductForDirectOrder = null;
 
-        // Render products into their respective category sections
+        // Render All Products into Respective Category Grids
         function renderProducts() {
-            const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-covers'];
+            const categories = ['fast-charger', 'earbuds', 'power-banks', 'speakers', 'mobile-accessories'];
             
             categories.forEach(cat => {
                 const container = document.getElementById(`grid-${cat}`);
                 if (!container) return;
-
-                const catProducts = products.filter(p => p.category === cat);
-                container.innerHTML = catProducts.map(product => `
-                    <div class="product-card bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:border-blue-300 relative group cursor-pointer"
-                         onclick="openProductModal(${product.id})">
-                        
-                        <!-- Badge -->
-                        <span class="absolute top-3 left-3 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-100 z-10">
-                            Verified
-                        </span>
-
-                        <!-- Product Visual Image Container -->
-                        <div class="product-img-container w-full h-32 bg-gradient-to-b from-slate-50 to-blue-50/40 rounded-xl flex items-center justify-center text-4xl mb-3 mt-4 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                            ${product.icon}
-                        </div>
-
-                        <!-- Product Info -->
-                        <div>
-                            <div class="flex items-center justify-between gap-1 mb-1">
-                                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">${product.brand || 'Original'}</span>
-                                <div class="flex items-center text-amber-400 text-[10px]">
+                
+                const filtered = products.filter(p => p.category === cat);
+                container.innerHTML = filtered.map(p => `
+                    <div class="product-card bg-white border border-slate-200/80 rounded-2xl p-3.5 flex flex-col justify-between relative shadow-sm hover:border-blue-300">
+                        <div class="cursor-pointer" onclick="openProductModal(${p.id})">
+                            <div class="w-full h-36 bg-slate-50 rounded-xl mb-3 flex items-center justify-center p-2 product-img-container overflow-hidden">
+                                ${p.icon}
+                            </div>
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wide bg-blue-50 px-2 py-0.5 rounded border border-blue-100 inline-block mb-1">
+                                ${p.brand}
+                            </span>
+                            <h3 class="font-bold text-xs sm:text-sm text-slate-800 line-clamp-2 leading-snug min-h-[2.5rem]" title="${p.title}">
+                                ${p.title}
+                            </h3>
+                            <div class="flex items-center gap-1 my-1.5">
+                                <div class="flex text-amber-400 text-[10px]">
                                     <i class="fas fa-star"></i>
-                                    <span class="text-slate-600 font-bold ml-1">${product.rating}</span>
                                 </div>
+                                <span class="text-[11px] font-semibold text-slate-600">${p.rating}</span>
                             </div>
-                            <h3 class="font-bold text-slate-800 text-xs sm:text-sm line-clamp-2 leading-snug group-hover:text-blue-600 transition-colors">${product.title}</h3>
+                            <div class="text-sm sm:text-base font-black text-blue-600 mb-3">
+                                PKR ${p.price.toLocaleString()}
+                            </div>
                         </div>
-
-                        <!-- Price & Action -->
-                        <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
-                            <div>
-                                <span class="text-[10px] text-slate-400 block -mb-1">Price</span>
-                                <span class="text-sm font-extrabold text-blue-600">PKR ${product.price.toLocaleString()}</span>
-                            </div>
-                            <button onclick="event.stopPropagation(); openOrderModalDirect(${product.id})" 
-                                    class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition shadow-sm flex items-center gap-1">
-                                <span>Order</span>
-                                <i class="fas fa-arrow-right text-[10px]"></i>
+                        <div class="grid grid-cols-2 gap-1.5 pt-2 border-t border-slate-100">
+                            <button onclick="addToCart(${p.id})" class="bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold py-2 rounded-lg text-xs transition border border-blue-200/60 flex items-center justify-center gap-1">
+                                <i class="fas fa-cart-plus text-[10px]"></i> Add
+                            </button>
+                            <button onclick="openOrderModalDirect(${p.id})" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg text-xs transition flex items-center justify-center gap-1 shadow-sm">
+                                <i class="fas fa-bolt text-[10px]"></i> Buy
                             </button>
                         </div>
                     </div>
@@ -996,92 +941,113 @@
             });
         }
 
-        // Open Product Details Modal Pop-up
-        function openProductModal(productId) {
-            const product = products.find(p => p.id === productId);
+        // Filter products with Search Bar
+        function filterProducts() {
+            const query = (document.getElementById('searchInput').value || document.getElementById('mobileSearchInput').value || '').toLowerCase();
+            const cards = document.querySelectorAll('.product-card');
+            
+            products.forEach((p, idx) => {
+                const isMatch = p.title.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query) || p.category.toLowerCase().includes(query);
+                if (cards[idx]) {
+                    cards[idx].style.display = isMatch ? 'flex' : 'none';
+                }
+            });
+        }
+
+        // Smooth scroll to sections
+        function scrollToSection(id) {
+            if (id === 'all') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const el = document.getElementById(id);
+            if (el) {
+                const offset = 140;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = el.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Product Modal Dialog logic
+        function openProductModal(id) {
+            const product = products.find(p => p.id === id);
             if (!product) return;
 
-            activeModalProduct = product;
-
-            // Populate Modal Content
             document.getElementById('modalProductIconContainer').innerHTML = product.icon;
-            document.getElementById('modalProductBrand').innerText = product.brand || 'H. Mobile Zone';
+            document.getElementById('modalProductBrand').innerText = product.brand;
             document.getElementById('modalProductTitle').innerText = product.title;
             document.getElementById('modalProductRating').innerText = product.rating;
             document.getElementById('modalProductPrice').innerText = `PKR ${product.price.toLocaleString()}`;
-            document.getElementById('modalProductDesc').innerText = product.description || 'High quality guaranteed mobile accessory built for longevity and maximum performance.';
+            document.getElementById('modalProductDesc').innerText = product.description;
 
-            // Populate Specs Grid
+            // Specs Rendering
             const specsGrid = document.getElementById('modalSpecsGrid');
-            if (product.specs) {
-                specsGrid.innerHTML = Object.entries(product.specs).map(([key, val]) => `
-                    <div class="bg-white p-2.5 rounded-xl border border-slate-200/80">
-                        <span class="text-[10px] text-slate-400 font-medium block">${key}</span>
-                        <span class="font-bold text-slate-700 text-xs">${val}</span>
-                    </div>
-                `).join('');
-            } else {
-                specsGrid.innerHTML = `
-                    <div class="col-span-2 bg-white p-2.5 rounded-xl border border-slate-200 text-slate-500 text-xs">
-                        Genuine Product with 100% Quality Assurance & Replacement Guarantee.
-                    </div>
-                `;
-            }
+            specsGrid.innerHTML = Object.entries(product.specs).map(([key, val]) => `
+                <div class="bg-white p-2 rounded-lg border border-slate-200/80">
+                    <span class="text-slate-400 font-medium block text-[10px] uppercase">${key}</span>
+                    <span class="font-semibold text-slate-800 text-xs">${val}</span>
+                </div>
+            `).join('');
 
-            // Configure Modal Buttons
-            document.getElementById('modalAddToCartBtn').onclick = function() {
+            // Action Buttons Setup
+            document.getElementById('modalAddToCartBtn').onclick = () => {
                 addToCart(product.id);
                 closeProductModal();
             };
-
-            document.getElementById('modalOrderNowBtn').onclick = function() {
+            document.getElementById('modalOrderNowBtn').onclick = () => {
                 closeProductModal();
                 openOrderModalDirect(product.id);
             };
 
-            // Show Modal
             document.getElementById('productModal').classList.remove('hidden');
         }
 
         function closeProductModal() {
             document.getElementById('productModal').classList.add('hidden');
-            activeModalProduct = null;
         }
 
-        // Add Product to Cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
+        // Cart Drawer Logic
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
             if (!product) return;
 
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) {
-                existingItem.quantity += 1;
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty += 1;
             } else {
-                cart.push({ ...product, quantity: 1 });
+                cart.push({ ...product, qty: 1 });
             }
 
             updateCartUI();
-            showToast('Added to Cart', `${product.title} has been added.`);
+            showToast('Added to Bag', `${product.title} has been added.`);
         }
 
-        // Cart Modal Drawer Toggle
-        function toggleCartModal() {
-            const modal = document.getElementById('cartModal');
-            modal.classList.toggle('hidden');
+        function updateCartQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            }
+            updateCartUI();
         }
 
-        // Update Cart UI
         function updateCartUI() {
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            document.getElementById('cartCount').innerText = totalCount;
+            document.getElementById('cartSubtotal').innerText = `PKR ${subtotal.toLocaleString()}`;
+
             const container = document.getElementById('cartItemsContainer');
-            const cartCount = document.getElementById('cartCount');
-            const cartSubtotal = document.getElementById('cartSubtotal');
-
-            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-
-            cartCount.innerText = totalItems;
-            cartSubtotal.innerText = `PKR ${subtotal.toLocaleString()}`;
-
             if (cart.length === 0) {
                 container.innerHTML = `
                     <div id="emptyCartMessage" class="text-center py-16 text-slate-400">
@@ -1090,67 +1056,62 @@
                         <p class="text-xs text-slate-400 mt-1">Browse our store and add accessories!</p>
                     </div>
                 `;
-                return;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-200/80 gap-3">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-1 text-2xl border border-slate-100 flex-shrink-0">
+                            ${item.icon}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-xs text-slate-800 truncate">${item.title}</h4>
+                            <span class="text-xs text-blue-600 font-extrabold">PKR ${(item.price * item.qty).toLocaleString()}</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white border border-slate-200 rounded-lg p-1">
+                            <button onclick="updateCartQty(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-600 font-bold hover:bg-slate-100 rounded text-xs">-</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                            <button onclick="updateCartQty(${item.id}, 1)" class="w-6 h-6 flex items-center justify-center text-slate-600 font-bold hover:bg-slate-100 rounded text-xs">+</button>
+                        </div>
+                    </div>
+                `).join('');
             }
-
-            container.innerHTML = cart.map(item => `
-                <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200/80 gap-3">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-xl overflow-hidden p-1 border border-slate-100 flex-shrink-0">
-                        ${item.icon}
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-xs text-slate-800 truncate">${item.title}</h4>
-                        <p class="text-xs font-extrabold text-blue-600 mt-0.5">PKR ${item.price.toLocaleString()}</p>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded-md bg-white border border-slate-300 text-xs font-bold text-slate-600 flex items-center justify-center hover:bg-slate-100">-</button>
-                        <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
-                        <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded-md bg-white border border-slate-300 text-xs font-bold text-slate-600 flex items-center justify-center hover:bg-slate-100">+</button>
-                    </div>
-                </div>
-            `).join('');
         }
 
-        function changeQty(productId, delta) {
-            const item = cart.find(i => i.id === productId);
-            if (!item) return;
-
-            item.quantity += delta;
-            if (item.quantity <= 0) {
-                cart = cart.filter(i => i.id !== productId);
-            }
-            updateCartUI();
+        function toggleCartModal() {
+            document.getElementById('cartModal').classList.toggle('hidden');
         }
 
-        // Direct Checkout from single product
-        function openOrderModalDirect(productId) {
-            const product = products.find(p => p.id === productId);
+        // Checkout / Direct Buy Modal logic
+        function openOrderModalDirect(id) {
+            const product = products.find(p => p.id === id);
             if (!product) return;
 
-            currentCheckoutProduct = product;
+            selectedProductForDirectOrder = {
+                name: product.title,
+                price: product.price,
+                items: [{ name: product.title, qty: 1, price: product.price }]
+            };
+
             document.getElementById('checkoutProductName').innerText = product.title;
             document.getElementById('checkoutProductPrice').innerText = `PKR ${product.price.toLocaleString()}`;
             document.getElementById('orderModal').classList.remove('hidden');
         }
 
-        // Checkout from Cart
         function openCheckoutModalDirect() {
-            if (cart.length === 0) {
-                showToast('Cart Empty', 'Please add items before checkout.');
-                return;
-            }
-            toggleCartModal();
-            
-            const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-            const itemsList = cart.map(i => `${i.title} (x${i.quantity})`).join(', ');
+            if (cart.length === 0) return;
 
-            currentCheckoutProduct = {
-                title: itemsList,
-                price: total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const itemsList = cart.map(i => `${i.title} (x${i.qty})`).join(', ');
+
+            selectedProductForDirectOrder = {
+                name: itemsList,
+                price: total,
+                items: [...cart]
             };
 
-            document.getElementById('checkoutProductName').innerText = itemsList;
-            document.getElementById('checkoutProductPrice').innerText = `PKR ${total.toLocaleString()}`;
+            document.getElementById('checkoutProductName').innerText = `Cart Items (${cart.length})`;
+            document.getElementById('checkoutProductPrice').innerText = `Total: PKR ${total.toLocaleString()}`;
+            
+            toggleCartModal();
             document.getElementById('orderModal').classList.remove('hidden');
         }
 
@@ -1158,60 +1119,47 @@
             document.getElementById('orderModal').classList.add('hidden');
         }
 
-        // Toggle Payment Notice Box
         function togglePaymentNotice() {
-            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
             const codNotice = document.getElementById('codNoticeText');
-
-            if (paymentMethod === 'Cash on Delivery (COD)') {
+            if (selectedMethod.includes('Cash on Delivery')) {
                 codNotice.classList.remove('hidden');
             } else {
                 codNotice.classList.add('hidden');
             }
         }
 
-        // Order Submit -> Redirect to WhatsApp
+        // Submit Order to WhatsApp
         function submitOrder(e) {
             e.preventDefault();
 
-            const name = document.getElementById('custName').value.trim();
-            const phone = document.getElementById('custPhone').value.trim();
-            const address = document.getElementById('custAddress').value.trim();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
             const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
 
-            if (!name || !phone || !address) {
-                showToast('Missing Info', 'Please fill in all details.');
-                return;
-            }
+            if (!selectedProductForDirectOrder) return;
 
-            const productName = currentCheckoutProduct ? currentCheckoutProduct.title : 'Mobile Accessories';
-            const price = currentCheckoutProduct ? currentCheckoutProduct.price : 0;
+            const orderDetails = `*--- NEW ORDER (H. MOBILE ZONE) ---*\n` +
+                `*Customer Name:* ${name}\n` +
+                `*Phone Number:* ${phone}\n` +
+                `*Delivery Address:* ${address}\n` +
+                `*Payment Method:* ${paymentMethod}\n` +
+                `---------------------------------\n` +
+                `*Items Ordered:*\n${selectedProductForDirectOrder.name}\n` +
+                `*Total Amount:* PKR ${selectedProductForDirectOrder.price.toLocaleString()}\n` +
+                `---------------------------------\n` +
+                `Quality Never Compromised!`;
 
-            let message = `*NEW ORDER - H. MOBILE ZONE*\n`;
-            message += `-----------------------------\n`;
-            message += `📦 *Product:* ${productName}\n`;
-            message += `💰 *Total Price:* PKR ${price.toLocaleString()}\n`;
-            message += `-----------------------------\n`;
-            message += `👤 *Customer Name:* ${name}\n`;
-            message += `📞 *Phone:* ${phone}\n`;
-            message += `🏠 *Address:* ${address}\n`;
-            message += `💳 *Payment Method:* ${paymentMethod}\n`;
+            const whatsappUrl = `https://wa.me/923349116077?text=${encodeURIComponent(orderDetails)}`;
             
-            if (paymentMethod === 'Cash on Delivery (COD)') {
-                message += `⚠️ *Note:* Rs. 500 advance payment required for COD.\n`;
-            }
-
-            message += `-----------------------------\n`;
-            message += `Please confirm my order. Thank you!`;
-
-            const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(message)}`;
-            
+            window.open(whatsappUrl, '_blank');
             closeOrderModal();
-            showToast('Order Redirect', 'Opening WhatsApp to complete your order...');
             
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 1000);
+            // Clear cart if ordered via cart
+            cart = [];
+            updateCartUI();
+            showToast('Order Sent!', 'Opening WhatsApp to complete your order.');
         }
 
         // Toast Helper
@@ -1224,40 +1172,12 @@
             toast.classList.add('translate-y-0', 'opacity-100');
 
             setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
                 toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
             }, 3000);
         }
 
-        // Scroll to Section
-        function scrollToSection(sectionId) {
-            if (sectionId === 'all') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return;
-            }
-            const elem = document.getElementById(sectionId);
-            if (elem) {
-                elem.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Search Filter
-        function filterProducts() {
-            const query = (document.getElementById('searchInput').value || document.getElementById('mobileSearchInput').value || '').toLowerCase();
-
-            products.forEach(p => {
-                const card = document.querySelector(`[onclick="openProductModal(${p.id})"]`);
-                if (card) {
-                    if (p.title.toLowerCase().includes(query) || p.category.toLowerCase().includes(query) || (p.brand && p.brand.toLowerCase().includes(query))) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
-        }
-
-        // Initialize Products On Window Load
+        // Initialize on window load
         window.onload = function() {
             renderProducts();
         };
