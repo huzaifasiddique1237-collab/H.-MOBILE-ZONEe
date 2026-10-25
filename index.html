@@ -1257,17 +1257,8 @@
         }
 
         // Initialize Products On Window Load
-       window.onload = function() {
-    renderProducts();
-
-    // URL se product ID detect karne ka code
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('product');
-    if (productId) {
-        openProductModal(parseInt(productId));
-    }
-};
-            
+        window.onload = function() {
+            renderProducts();
         };
     </script>
 </body>
