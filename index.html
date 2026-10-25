@@ -1256,9 +1256,18 @@
             });
         }
 
-        // Initialize Products On Window Load
+       // Initialize Products On Window Load
         window.onload = function() {
             renderProducts();
+
+            // URL se product ID detect karne ka code
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product');
+            if (productId) {
+                setTimeout(() => {
+                    openProductModal(parseInt(productId));
+                }, 500);
+            }
         };
     </script>
 </body>
